@@ -1,0 +1,2115 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2014 11:09:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{36E0CD1D-F2ED-4B80-B247-F0EE6DCA8E80}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_LX_Lx2Stg_FileAgentStatst"
+  DTS:PackageType="5"
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{61850B76-85DC-4867-97DE-70D88B930D98}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lxAgentStats]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{EAA749A7-B431-4E86-9F16-B8E0AF649DA2}"
+      DTS:ObjectName="lxAgentStats">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::LXFileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\Caant\fs\CLAUTO_DATA\EDW LX\ClubAutoAgentStats_2014-09-11.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="INTERVALSTART"
+              DTS:DTSID="{7F3A1F79-65F3-4227-9040-5E94B2067EB9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USERID"
+              DTS:DTSID="{EBA9E2A7-851E-4E7F-91DD-B31C2105C8B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FIRSTNAME"
+              DTS:DTSID="{9D717423-E3D6-48FD-BBEB-96BAA8EBE802}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LASTNAME"
+              DTS:DTSID="{89C4A2A5-B8B1-4819-9490-056BC3F14E55}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_INBOUND_CALLS"
+              DTS:DTSID="{E8E3A7EF-779F-4211-B869-13EDF26A61AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_HOLD_NUMBER"
+              DTS:DTSID="{1DE42285-B90F-4582-8602-CECB6773229C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_HOLD_OCC"
+              DTS:DTSID="{B6F0625A-BAB2-4E65-B867-F3A5A56D5E0C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_HOLD_TIME"
+              DTS:DTSID="{CA5E7F0A-374F-4E0D-9EE4-7602303124EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_TALK_TIME"
+              DTS:DTSID="{923094C4-D644-4D2B-8BF0-D554F3A5813C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_LC_TIME"
+              DTS:DTSID="{CDB45F8F-9328-41FB-9D4A-F438B3553367}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_IN_LC_TIME"
+              DTS:DTSID="{928F5C64-BA7A-4590-BABB-97879C0B04CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_OUT_LC_TIME"
+              DTS:DTSID="{AECC13FD-EE6E-46CF-A05D-34DB9762D99E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_LOGIN_TIME"
+              DTS:DTSID="{B3E466E4-F721-4EBE-BB75-7C4DBC2A7F8F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_ONBREAK_TIME"
+              DTS:DTSID="{7038CD92-8C36-4D95-A093-A0F376840CC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_AVAIL_TIME"
+              DTS:DTSID="{BD0F52F2-689E-4E3A-A65D-D6B5E961A5BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="USER_BUSY_TIME"
+              DTS:DTSID="{3194E1C2-437B-4CD2-8BB7-608B58CF586B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{CEE8F294-722C-4866-B391-516CA8A45E18}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{F13B6806-1327-4F16-A7CA-D205364CB7C3}"
+      DTS:ObjectName="LXFolderName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">\\Caant\fs\CLAUTO_DATA\EDW LX</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{A167969B-26B8-4FA9-8BAD-E68416D9CD9C}"
+      DTS:ObjectName="ProcessedFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">\\Caant\fs\CLAUTO_DATA\EDW LX\Processed</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6599F30C-C290-4655-AF2E-8FEA17361FEB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8FB0BA38-7B10-49C2-A0CD-C0E116C3B7C4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ProcessedFolder] +  @[User::filePrefix] +    @[User::pureLXFileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DetsPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\Caant\fs\CLAUTO_DATA\EDW LX\Processed\prcd0_0ClubAutoAgentStats_2014-09-11.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D14FE09-91D5-4FB6-8D52-D944C68B5359}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;\\prcd&quot;+ &#xA;REPLACE(&#xA; REPLACE( &#xA; REPLACE( &#xA;  (DT_WSTR, 100) @[$Package::BatchId]  +&quot;_&quot;+  (DT_WSTR, 100) @[User::PackageExecId] &#xA;, &quot;/&quot;, &quot;&quot; ) &#xA;,&quot;:&quot;, &quot;&quot; ) &#xA;,&quot; &quot;,&quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filePrefix">
+      <DTS:VariableValue
+        DTS:DataType="8">\prcd0_0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{91D8ECCB-E7F6-417C-B6D3-8033FAEA9D62}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="lxFileId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C8703C05-AB34-4356-AF93-64B51A73813E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LXFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">\\Caant\fs\CLAUTO_DATA\EDW LX\ClubAutoAgentStats_2014-09-11.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{378F43B5-9E26-4F26-977A-B62490396404}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1485E17B-1EB1-40E4-AE17-FE51D5B1BB15}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="Right( @[User::LXFileName]  ,   FINDSTRING( Reverse( @[User::LXFileName]  ), &quot;\\&quot;,1 ) - 1)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pureLXFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">ClubAutoAgentStats_2014-09-11.CSV</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End DataFlow"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{159c4383-f76a-4b55-84cb-2656436dd2a0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End DataFlow"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::DataFlowId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c20698e0-ef0a-46e1-93f9-033af42cfb7e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\For Each LX AgentStats File"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{BC12F3BE-66FE-4799-A4D7-7455EB4D6F93}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="For Each LX AgentStats File">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{D115CF24-5201-482D-90F6-BE7CD6802C36}"
+        DTS:ObjectName="{D115CF24-5201-482D-90F6-BE7CD6802C36}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\Caant\fs\CLAUTO_DATA\EDW LX" />
+            <FEFEProperty
+              FileSpec="ClubAutoAgentStats_20*.CSV" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX AgentStats File\Delete"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{E6E08B88-6A8F-41A2-9581-4992B44F1F5F}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="DeleteFile"
+              TaskSourcePath="User::LXFileName"
+              TaskIsSourceVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX AgentStats File\Failure"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F2846E57-971E-4AED-81C9-27DEF3241BE8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Failure"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Exec MCB.usp_End_ETLDataFile_Falure ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lxFileId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX AgentStats File\LX Agent Stats File Processing"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FF4A8D92-BF24-4BE9-A1F9-F6FEAAF4F63F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LX Agent Stats File Processing"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource=" Exec MCB.usp_FileId_Get ?, ?, ?, ? Out " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::pureLXFileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="$Package::BatchId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::lxFileId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{C3ABD2DD-F207-4C0E-B26F-49198DBA50CA}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="lx AgentStats File 2 Staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[FileSource]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[FileSource]"
+                          name="FileSource"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::pureLXFileName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::pureLXFileName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          name="BatchId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::BatchId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::BatchId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="LXAgentStats"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[LX].[AgentStats]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Connections[OleDbConnection]"
+                      connectionManagerID="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[FileSource]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="FileSource"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[FileSource]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[FileSource]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[BatchId]"
+                          cachedDataType="i4"
+                          cachedName="BatchId"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchId]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[INTERVALSTART]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="INTERVALSTART"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[INTERVALSTART]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[INTERVALSTART]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USERID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USERID"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USERID]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USERID]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[FIRSTNAME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FIRSTNAME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[FIRSTNAME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[FIRSTNAME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[LASTNAME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LASTNAME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[LASTNAME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[LASTNAME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_INBOUND_CALLS]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_INBOUND_CALLS"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_INBOUND_CALLS]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_INBOUND_CALLS]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_HOLD_NUMBER]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_HOLD_NUMBER"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_HOLD_NUMBER]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_NUMBER]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_HOLD_OCC]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_HOLD_OCC"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_HOLD_OCC]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_OCC]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_HOLD_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_HOLD_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_HOLD_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_TALK_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_TALK_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_TALK_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_TALK_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_LC_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_LC_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_LC_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_LC_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_IN_LC_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_IN_LC_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_IN_LC_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_IN_LC_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_OUT_LC_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_OUT_LC_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_OUT_LC_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_OUT_LC_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_LOGIN_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_LOGIN_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_LOGIN_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_LOGIN_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_ONBREAK_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_ONBREAK_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_ONBREAK_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_ONBREAK_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_AVAIL_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_AVAIL_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_AVAIL_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_AVAIL_TIME]" />
+                        <inputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].Columns[USER_BUSY_TIME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="USER_BUSY_TIME"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_BUSY_TIME]"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_BUSY_TIME]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[INTERVALSTART]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="INTERVALSTART" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[FileSource]"
+                          dataType="wstr"
+                          length="255"
+                          name="FileSource" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          dataType="i4"
+                          name="BatchId" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USERID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USERID" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[FIRSTNAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FIRSTNAME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[LASTNAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="LASTNAME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_INBOUND_CALLS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_INBOUND_CALLS" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_HOLD_NUMBER]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_HOLD_NUMBER" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_HOLD_OCC]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_HOLD_OCC" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_HOLD_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_HOLD_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_TALK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_TALK_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_IN_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_IN_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_OUT_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_OUT_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_LOGIN_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_LOGIN_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_ONBREAK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_ONBREAK_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_AVAIL_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_AVAIL_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input].ExternalColumns[USER_BUSY_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_BUSY_TIME" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="lxProject"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[lxAgentStats]"
+                      connectionManagerRefId="Package.ConnectionManagers[lxAgentStats]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[INTERVALSTART]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[INTERVALSTART]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[INTERVALSTART]"
+                          name="INTERVALSTART"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USERID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USERID]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USERID]"
+                          name="USERID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[FIRSTNAME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[FIRSTNAME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[FIRSTNAME]"
+                          name="FIRSTNAME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[LASTNAME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[LASTNAME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[LASTNAME]"
+                          name="LASTNAME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_INBOUND_CALLS]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_INBOUND_CALLS]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_INBOUND_CALLS]"
+                          name="USER_INBOUND_CALLS"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_NUMBER]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_HOLD_NUMBER]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_NUMBER]"
+                          name="USER_HOLD_NUMBER"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_OCC]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_HOLD_OCC]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_OCC]"
+                          name="USER_HOLD_OCC"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_HOLD_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_HOLD_TIME]"
+                          name="USER_HOLD_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_TALK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_TALK_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_TALK_TIME]"
+                          name="USER_TALK_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_LC_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_LC_TIME]"
+                          name="USER_LC_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_IN_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_IN_LC_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_IN_LC_TIME]"
+                          name="USER_IN_LC_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_OUT_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_OUT_LC_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_OUT_LC_TIME]"
+                          name="USER_OUT_LC_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_LOGIN_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_LOGIN_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_LOGIN_TIME]"
+                          name="USER_LOGIN_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_ONBREAK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_ONBREAK_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_ONBREAK_TIME]"
+                          name="USER_ONBREAK_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_AVAIL_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_AVAIL_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_AVAIL_TIME]"
+                          name="USER_AVAIL_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_BUSY_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_BUSY_TIME]"
+                          length="50"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[USER_BUSY_TIME]"
+                          name="USER_BUSY_TIME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[INTERVALSTART]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="INTERVALSTART" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USERID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USERID" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[FIRSTNAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FIRSTNAME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[LASTNAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="LASTNAME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_INBOUND_CALLS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_INBOUND_CALLS" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_HOLD_NUMBER]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_HOLD_NUMBER" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_HOLD_OCC]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_HOLD_OCC" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_HOLD_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_HOLD_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_TALK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_TALK_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_IN_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_IN_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_OUT_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_OUT_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_LOGIN_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_LOGIN_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_ONBREAK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_ONBREAK_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_AVAIL_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_AVAIL_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[USER_BUSY_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="USER_BUSY_TIME" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging.Paths[Derived Column Output]"
+                  endId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging.Paths[Flat File Source Output]"
+                  endId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX AgentStats File\RenameNMove"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{16B48C8B-83D6-4150-98E5-1C88477CDCA8}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="RenameNMove"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskSourcePath="User::LXFileName"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::DetsPath"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX AgentStats File\Success"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5824E840-C7C9-4020-B6B6-E3E4C410E689}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Success"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Exec MCB.usp_End_ETLDataFile_Success ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lxFileId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{50A5F468-962B-4114-89BC-7045E66BB264}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::lxFileId] &gt; 0"
+          DTS:From="Package\For Each LX AgentStats File\LX Agent Stats File Processing"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{3CBEBA05-D478-4CF4-A905-DB8F19C96FA4}"
+          DTS:From="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\For Each LX AgentStats File\RenameNMove" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{2F7C73EB-5612-4AD6-B045-6CD474EE2F2B}"
+          DTS:From="Package\For Each LX AgentStats File\RenameNMove"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\For Each LX AgentStats File\Delete" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{64AFDEA3-A07E-4EDD-AE3F-2FF7F8037AD6}"
+          DTS:From="Package\For Each LX AgentStats File\Delete"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\For Each LX AgentStats File\Success" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{6B6AD9F3-C23D-40EB-805A-C5BC09C57B24}"
+          DTS:From="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\For Each LX AgentStats File\Failure"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D63D19E6-92E6-441C-8998-FF939AF50455}"
+          DTS:ObjectName="{D63D19E6-92E6-441C-8998-FF939AF50455}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::LXFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LX AgentStats 2 EDW"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{83cf1ffe-9361-4a06-98c7-a525434258a4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LX AgentStats 2 EDW"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::TaskName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::DataFlowId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{af856346-fd77-43c8-a092-7e99bd58dde2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{176905D6-89EE-4AF8-A4A1-D21CD7CC248B}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\LX AgentStats 2 EDW" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{83A72D17-5ABE-4317-B26A-EDAEF68E25E6}"
+      DTS:From="Package\For Each LX AgentStats File"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End DataFlow" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A088FC6-35B0-4AB4-8F76-1807B39AC6F5}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DataFlowId] &gt; 0"
+      DTS:From="Package\LX AgentStats 2 EDW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\For Each LX AgentStats File" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{6AB2EDCD-BB0E-464E-9E10-814157EE527A}"
+      DTS:From="Package\End DataFlow"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\End DataFlow"
+          TopLeft="918,303" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="779,444" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\For Each LX AgentStats File\Delete"
+          TopLeft="27,256" />
+        <NodeLayout
+          Size="112,42"
+          Id="Package\For Each LX AgentStats File\Failure"
+          TopLeft="348,116" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\For Each LX AgentStats File\LX Agent Stats File Processing"
+          TopLeft="29,15" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging"
+          TopLeft="42,105" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\For Each LX AgentStats File\RenameNMove"
+          TopLeft="43,183" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\For Each LX AgentStats File\Success"
+          TopLeft="232,260" />
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint]"
+          TopLeft="143.75,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,12.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 1]"
+          TopLeft="147,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.5,36"
+              Start="0,0"
+              End="-28.5,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-24.5,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.5,18"
+                    Point2="-28.5,18"
+                    Point3="-28.5,22" />
+                  <mssgle:LineSegment
+                    End="-28.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 2]"
+          TopLeft="118.5,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36,31"
+              Start="0,0"
+              End="-36,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-32,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32,15.5"
+                    Point2="-36,15.5"
+                    Point3="-36,19.5" />
+                  <mssgle:LineSegment
+                    End="-36,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 3]"
+          TopLeft="138,279">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94,0"
+              Start="0,0"
+              End="86.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="86.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File.PrecedenceConstraints[Constraint 4]"
+          TopLeft="252,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96,11"
+              Start="0,0"
+              End="88.5,11">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44,0"
+                    Point2="48,0"
+                    Point3="48,4" />
+                  <mssgle:LineSegment
+                    End="48,7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48,7"
+                    Point2="48,11"
+                    Point3="52,11" />
+                  <mssgle:LineSegment
+                    End="88.5,11" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="32.75865234375,-15.7490234375,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="669,376"
+          Size="669,419"
+          Id="Package\For Each LX AgentStats File"
+          TopLeft="73,171" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\LX AgentStats 2 EDW"
+          TopLeft="620,97" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="284,62" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="430,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="190,35"
+              Start="0,0"
+              End="182.5,35">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="91,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91,0"
+                    Point2="95,0"
+                    Point3="95,4" />
+                  <mssgle:LineSegment
+                    End="95,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95,31"
+                    Point2="95,35"
+                    Point3="99,35" />
+                  <mssgle:LineSegment
+                    End="182.5,35" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="87,-22,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="742,380.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176,-56.5"
+              Start="0,0"
+              End="168.5,-56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="84,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84,0"
+                    Point2="88,0"
+                    Point3="88,-4" />
+                  <mssgle:LineSegment
+                    End="88,-52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="88,-52.5"
+                    Point2="88,-56.5"
+                    Point3="92,-56.5" />
+                  <mssgle:LineSegment
+                    End="168.5,-56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="711,139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-303.5,32"
+              Start="0,0"
+              End="-303.5,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="-4,16" />
+                  <mssgle:LineSegment
+                    End="-299.5,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-299.5,16"
+                    Point2="-303.5,16"
+                    Point3="-303.5,20" />
+                  <mssgle:LineSegment
+                    End="-303.5,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-159.75,21,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="991,345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-141.5,99"
+              Start="0,0"
+              End="-141.5,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.5"
+                    Point2="0,49.5"
+                    Point3="-4,49.5" />
+                  <mssgle:LineSegment
+                    End="-137.5,49.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-137.5,49.5"
+                    Point2="-141.5,49.5"
+                    Point3="-141.5,53.5" />
+                  <mssgle:LineSegment
+                    End="-141.5,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="121,42"
+          Id="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\lxProject"
+          TopLeft="246,176" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\Derived Column"
+          TopLeft="419,273" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats"
+          TopLeft="262,406" />
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging.Paths[Flat File Source Output]"
+          TopLeft="306.5,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="190.5,55"
+              Start="0,0"
+              End="190.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="186.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="186.5,27.5"
+                    Point2="190.5,27.5"
+                    Point3="190.5,31.5" />
+                  <mssgle:LineSegment
+                    End="190.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging.Paths[Derived Column Output]"
+          TopLeft="497,315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-163.5,91"
+              Start="0,0"
+              End="-163.5,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="-4,45.5" />
+                  <mssgle:LineSegment
+                    End="-159.5,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-159.5,45.5"
+                    Point2="-163.5,45.5"
+                    Point3="-163.5,49.5" />
+                  <mssgle:LineSegment
+                    End="-163.5,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Each LX AgentStats File\lx AgentStats File 2 Staging\LXAgentStats">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1451 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{99C7E32E-010D-420F-84CC-FCEA512F3921}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_Stg2EDW_CallDetail"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{E324E188-89BC-46B8-A4EF-50B91A27E55C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{61530DA0-9969-40A9-9AC6-934899258909}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E5238BAF-615F-4419-A479-0E5155CEEAC2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{955618CF-2328-4464-9D59-1B5E7E82B2C0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Staging2EDWDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B6FD808C-6D8F-495A-830A-1C518FDC3DEA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ Stg 2 EDW Call Detail Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{28413CFF-E057-419E-924D-95834C4549B8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ Stg 2 EDW Call Detail Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW Call Detail Sq\EndFlow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{82DAFD0A-4B45-4755-885A-C5A80B7C0413}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EndFlow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ Call Detail Fact Populate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{931C8877-3D28-4244-B4C4-AE6D5D9FDF3D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ Call Detail Fact Populate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{54F2CB19-7AED-4BDE-93D2-5C9787D34D9A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ CallDetail Stg2EDW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="CallDetail View"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[vw_ETL_ININ_CallDetail_Fact_Populate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[CallID]"
+                          length="18"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallID]"
+                          name="CallID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[TelecomCallTypekey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[TelecomCallTypekey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[TelecomCallTypekey]"
+                          name="TelecomCallTypekey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[Agentkey]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[Agentkey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[Agentkey]"
+                          name="Agentkey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[WorkgroupKey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]"
+                          name="WorkgroupKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[RemoteNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[RemoteNumber]"
+                          length="50"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[RemoteNumber]"
+                          name="RemoteNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[RemoteName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[RemoteName]"
+                          length="50"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[RemoteName]"
+                          name="RemoteName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallDateKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[CallDateKey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallDateKey]"
+                          name="CallDateKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[Intervalkey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[Intervalkey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[Intervalkey]"
+                          name="Intervalkey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[InitiatedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[InitiatedDate]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[InitiatedDate]"
+                          name="InitiatedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallDurationSeconds]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[CallDurationSeconds]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallDurationSeconds]"
+                          name="CallDurationSeconds"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[HoldDurationSeconds]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[HoldDurationSeconds]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[HoldDurationSeconds]"
+                          name="HoldDurationSeconds"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[IVRWaitTime]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[IVRWaitTime]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[IVRWaitTime]"
+                          name="IVRWaitTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nIVR]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nIVR]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nIVR]"
+                          name="nIVR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tDialing]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tDialing]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tDialing]"
+                          name="tDialing"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tQueueWait]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tQueueWait]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tQueueWait]"
+                          name="tQueueWait"
+                          precision="19"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tAlert]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tAlert]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tAlert]"
+                          name="tAlert"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tSuspend]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tSuspend]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tSuspend]"
+                          name="tSuspend"
+                          precision="19"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tConference]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tConference]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tConference]"
+                          name="tConference"
+                          precision="19"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tExternal]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tExternal]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tExternal]"
+                          name="tExternal"
+                          precision="19"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tACW]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tACW]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tACW]"
+                          name="tACW"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nQueueWait]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nQueueWait]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nQueueWait]"
+                          name="nQueueWait"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nTalk]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nTalk]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nTalk]"
+                          name="nTalk"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nConference]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nConference]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nConference]"
+                          name="nConference"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nHeld]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nHeld]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nHeld]"
+                          name="nHeld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nExternal]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nExternal]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nExternal]"
+                          name="nExternal"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[CallID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          name="CallID" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[TelecomCallTypekey]"
+                          dataType="i8"
+                          name="TelecomCallTypekey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[Agentkey]"
+                          dataType="i2"
+                          name="Agentkey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[WorkgroupKey]"
+                          dataType="i4"
+                          name="WorkgroupKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[RemoteNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="RemoteNumber" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[RemoteName]"
+                          dataType="wstr"
+                          length="50"
+                          name="RemoteName" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[CallDateKey]"
+                          dataType="i4"
+                          name="CallDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[Intervalkey]"
+                          dataType="i4"
+                          name="Intervalkey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[InitiatedDate]"
+                          dataType="dbTimeStamp"
+                          name="InitiatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[CallDurationSeconds]"
+                          dataType="i4"
+                          name="CallDurationSeconds" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[HoldDurationSeconds]"
+                          dataType="i4"
+                          name="HoldDurationSeconds" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[IVRWaitTime]"
+                          dataType="i4"
+                          name="IVRWaitTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nIVR]"
+                          dataType="i2"
+                          name="nIVR" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tDialing]"
+                          dataType="i4"
+                          name="tDialing" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tQueueWait]"
+                          dataType="numeric"
+                          name="tQueueWait"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tAlert]"
+                          dataType="i4"
+                          name="tAlert" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tSuspend]"
+                          dataType="numeric"
+                          name="tSuspend"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tConference]"
+                          dataType="numeric"
+                          name="tConference"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tExternal]"
+                          dataType="numeric"
+                          name="tExternal"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[tACW]"
+                          dataType="i4"
+                          name="tACW" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nQueueWait]"
+                          dataType="i2"
+                          name="nQueueWait" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nTalk]"
+                          dataType="i2"
+                          name="nTalk" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nConference]"
+                          dataType="i2"
+                          name="nConference" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nHeld]"
+                          dataType="i2"
+                          name="nHeld" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].ExternalColumns[nExternal]"
+                          dataType="i2"
+                          name="nExternal" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[CallID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[CallID]"
+                          name="CallID" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[TelecomCallTypekey]"
+                          dataType="i8"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[TelecomCallTypekey]"
+                          name="TelecomCallTypekey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[Agentkey]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[Agentkey]"
+                          name="Agentkey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[WorkgroupKey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[WorkgroupKey]"
+                          name="WorkgroupKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[RemoteNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[RemoteNumber]"
+                          name="RemoteNumber" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[RemoteName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[RemoteName]"
+                          name="RemoteName" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[CallDateKey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[CallDateKey]"
+                          name="CallDateKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[Intervalkey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[Intervalkey]"
+                          name="Intervalkey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[InitiatedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[InitiatedDate]"
+                          name="InitiatedDate" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[CallDurationSeconds]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[CallDurationSeconds]"
+                          name="CallDurationSeconds" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[HoldDurationSeconds]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[HoldDurationSeconds]"
+                          name="HoldDurationSeconds" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[IVRWaitTime]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[IVRWaitTime]"
+                          name="IVRWaitTime" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nIVR]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nIVR]"
+                          name="nIVR" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tDialing]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tDialing]"
+                          name="tDialing" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tQueueWait]"
+                          dataType="numeric"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tQueueWait]"
+                          name="tQueueWait"
+                          precision="19" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tAlert]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tAlert]"
+                          name="tAlert" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tSuspend]"
+                          dataType="numeric"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tSuspend]"
+                          name="tSuspend"
+                          precision="19" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tConference]"
+                          dataType="numeric"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tConference]"
+                          name="tConference"
+                          precision="19" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tExternal]"
+                          dataType="numeric"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tExternal]"
+                          name="tExternal"
+                          precision="19" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tACW]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[tACW]"
+                          name="tACW" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nQueueWait]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nQueueWait]"
+                          name="nQueueWait" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nTalk]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nTalk]"
+                          name="nTalk" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nConference]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nConference]"
+                          name="nConference" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nHeld]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nHeld]"
+                          name="nHeld" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nExternal]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[nExternal]"
+                          name="nExternal" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="FactTelecomCall"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FactTelecomCall]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[CallID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="18"
+                          cachedName="CallID"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[CallID]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallID]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[TelecomCallTypekey]"
+                          cachedDataType="i8"
+                          cachedName="TelecomCallTypekey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[TelecomCallTypekey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[TelecomCallTypekey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[Agentkey]"
+                          cachedDataType="i2"
+                          cachedName="Agentkey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[Agentkey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[Agentkey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[WorkgroupKey]"
+                          cachedDataType="i4"
+                          cachedName="WorkgroupKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupKey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[RemoteNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="RemoteNumber"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[RemoteNumber]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[RemoteNumber]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[RemoteName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="RemoteName"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[RemoteName]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[RemoteName]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[CallDateKey]"
+                          cachedDataType="i4"
+                          cachedName="CallDateKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[CallDateKey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallDateKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[Intervalkey]"
+                          cachedDataType="i4"
+                          cachedName="Intervalkey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[Intervalkey]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[Intervalkey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[InitiatedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="InitiatedDate"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[InitiatedDate]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[InitiatedDate]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[CallDurationSeconds]"
+                          cachedDataType="i4"
+                          cachedName="CallDurationSeconds"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[CallDurationSeconds]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[CallDurationSeconds]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[HoldDurationSeconds]"
+                          cachedDataType="i4"
+                          cachedName="HoldDurationSeconds"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[HoldDurationSeconds]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[HoldDurationSeconds]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[IVRWaitTime]"
+                          cachedDataType="i4"
+                          cachedName="IVRWaitTime"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[IVRWaitTime]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[IVRWaitTime]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[nIVR]"
+                          cachedDataType="i2"
+                          cachedName="nIVR"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nIVR]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nIVR]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tDialing]"
+                          cachedDataType="i4"
+                          cachedName="tDialing"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tDialing]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tDialing]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tQueueWait]"
+                          cachedDataType="numeric"
+                          cachedName="tQueueWait"
+                          cachedPrecision="19"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tQueueWait]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tQueueWait]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tAlert]"
+                          cachedDataType="i4"
+                          cachedName="tAlert"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tAlert]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tAlert]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tSuspend]"
+                          cachedDataType="numeric"
+                          cachedName="tSuspend"
+                          cachedPrecision="19"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tSuspend]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tSuspend]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tConference]"
+                          cachedDataType="numeric"
+                          cachedName="tConference"
+                          cachedPrecision="19"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tConference]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tConference]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tExternal]"
+                          cachedDataType="numeric"
+                          cachedName="tExternal"
+                          cachedPrecision="19"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tExternal]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tExternal]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[tACW]"
+                          cachedDataType="i4"
+                          cachedName="tACW"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tACW]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[tACW]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[nQueueWait]"
+                          cachedDataType="i2"
+                          cachedName="nQueueWait"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nQueueWait]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nQueueWait]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[nTalk]"
+                          cachedDataType="i2"
+                          cachedName="nTalk"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nTalk]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nTalk]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[nConference]"
+                          cachedDataType="i2"
+                          cachedName="nConference"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nConference]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nConference]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[nHeld]"
+                          cachedDataType="i2"
+                          cachedName="nHeld"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nHeld]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nHeld]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].Columns[nExternal]"
+                          cachedDataType="i2"
+                          cachedName="nExternal"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nExternal]"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output].Columns[nExternal]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[CallID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          name="CallID" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[TelecomCallTypekey]"
+                          dataType="i8"
+                          name="TelecomCallTypekey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[Agentkey]"
+                          dataType="i2"
+                          name="Agentkey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupKey]"
+                          dataType="i4"
+                          name="WorkgroupKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[RemoteNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="RemoteNumber" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[RemoteName]"
+                          dataType="wstr"
+                          length="50"
+                          name="RemoteName" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[CallDateKey]"
+                          dataType="i4"
+                          name="CallDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[Intervalkey]"
+                          dataType="i4"
+                          name="Intervalkey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[InitiatedDate]"
+                          dataType="dbTimeStamp"
+                          name="InitiatedDate" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[CallDurationSeconds]"
+                          dataType="i4"
+                          name="CallDurationSeconds" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[HoldDurationSeconds]"
+                          dataType="i4"
+                          name="HoldDurationSeconds" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[IVRWaitTime]"
+                          dataType="i4"
+                          name="IVRWaitTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nIVR]"
+                          dataType="i2"
+                          name="nIVR" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tDialing]"
+                          dataType="i4"
+                          name="tDialing" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tQueueWait]"
+                          dataType="numeric"
+                          name="tQueueWait"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tAlert]"
+                          dataType="i4"
+                          name="tAlert" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tSuspend]"
+                          dataType="numeric"
+                          name="tSuspend"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tConference]"
+                          dataType="numeric"
+                          name="tConference"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tExternal]"
+                          dataType="numeric"
+                          name="tExternal"
+                          precision="19" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[tACW]"
+                          dataType="i4"
+                          name="tACW" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nQueueWait]"
+                          dataType="i2"
+                          name="nQueueWait" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nTalk]"
+                          dataType="i2"
+                          name="nTalk" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nConference]"
+                          dataType="i2"
+                          name="nConference" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nHeld]"
+                          dataType="i2"
+                          name="nHeld" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input].ExternalColumns[nExternal]"
+                          dataType="i2"
+                          name="nExternal" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW.Paths[OLE DB Source Output]"
+                  endId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW Call Detail Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{86196E2F-02DA-4CF9-92B8-0F0853C8E630}"
+          DTS:From="Package\ININ Stg 2 EDW Call Detail Sq\ININ Call Detail Fact Populate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW Call Detail Sq.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{06BC85F0-1A1B-45E7-A7E2-E0735480FF90}"
+          DTS:From="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\ININ Stg 2 EDW Call Detail Sq\EndFlow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6326C54D-53B0-44FC-8C78-270DF812C712}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{867B7DBF-6DCE-4DAA-B1D9-DACAF7005C3F}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ Stg 2 EDW Call Detail Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{73D323DB-74CD-4668-A642-D7AA66339632}"
+      DTS:From="Package\ININ Stg 2 EDW Call Detail Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\ININ Stg 2 EDW Call Detail Sq\EndFlow"
+          TopLeft="51,258" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\ININ Stg 2 EDW Call Detail Sq\ININ Call Detail Fact Populate"
+          TopLeft="22,20" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW"
+          TopLeft="67,130" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW Call Detail Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="132.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.5,68"
+              Start="0,0"
+              End="33.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="29.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5,34"
+                    Point2="33.5,34"
+                    Point3="33.5,38" />
+                  <mssgle:LineSegment
+                    End="33.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW Call Detail Sq.PrecedenceConstraints[Constraint 1]"
+          TopLeft="166,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-54.5,86"
+              Start="0,0"
+              End="-54.5,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-50.5,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-50.5,43"
+                    Point2="-54.5,43"
+                    Point3="-54.5,47" />
+                  <mssgle:LineSegment
+                    End="-54.5,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ Stg 2 EDW Call Detail Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View"
+          TopLeft="649,98" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall"
+          TopLeft="756,275" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW.Paths[OLE DB Source Output]"
+          TopLeft="724,140">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,135"
+              Start="0,0"
+              End="110.5,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.5"
+                    Point2="0,67.5"
+                    Point3="4,67.5" />
+                  <mssgle:LineSegment
+                    End="106.5,67.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,67.5"
+                    Point2="110.5,67.5"
+                    Point3="110.5,71.5" />
+                  <mssgle:LineSegment
+                    End="110.5,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\CallDetail View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW Call Detail Sq\ININ CallDetail Stg2EDW\FactTelecomCall">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

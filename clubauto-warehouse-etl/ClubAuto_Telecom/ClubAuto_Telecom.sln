@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ClubAuto_Telecom", "ClubAuto_Telecom\ClubAuto_Telecom.dtproj", "{24EB50B5-6B4F-4184-B65D-52738567BE78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24EB50B5-6B4F-4184-B65D-52738567BE78}.Development|Default.ActiveCfg = Development
+		{24EB50B5-6B4F-4184-B65D-52738567BE78}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0762A26A-B4B5-4C0C-8E6F-BBBCE17C4974}
+	EndGlobalSection
+EndGlobal

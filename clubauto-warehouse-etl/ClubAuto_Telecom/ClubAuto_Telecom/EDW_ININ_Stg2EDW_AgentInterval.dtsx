@@ -1,0 +1,1265 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{EEF88C37-C811-421F-A6FD-C26345A20A15}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_Stg2EDW_AgentInterval"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{1FAEC366-413D-4E91-8D12-2125B75C3131}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{2CDA3ECA-6727-42BB-BCD4-30C4C23CDA5A}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C7FED21D-DB7D-4212-B970-28C3F22B50E9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{81CE8E4F-F860-4F45-8AF3-39E36D46B636}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Staging2EDWDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8F5CD14E-FAC8-4F9F-9471-17D561110027}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ Stg 2 EDW AgentInterval Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A3B026C0-81B7-4602-8703-4CC805EE40E6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ Stg 2 EDW AgentInterval Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentInterval Sq\EndFlow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B7EEBCF1-2DAD-40BC-B63A-5488FF829DDE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EndFlow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CE6F11BE-2E75-400C-9AE1-62644BE0DF83}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ Agent Interval Stg2EDW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AgentInterval View"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select Distinct * From [dbo].[vw_ETL_ININ_AgentInterval_Fact_Populate]
+Order By IntervalDatekey,  Intervalkey</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SummaryId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SummaryId]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SummaryId]"
+                          name="SummaryId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[WorkgroupKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]"
+                          name="WorkgroupKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[Intervalkey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[Intervalkey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[Intervalkey]"
+                          name="Intervalkey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IncomingCalls]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[IncomingCalls]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IncomingCalls]"
+                          name="IncomingCalls"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsHandling]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsHandling]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsHandling]"
+                          name="SecondsHandling"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsAfterCall]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsAfterCall]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsAfterCall]"
+                          name="SecondsAfterCall"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInWait]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInWait]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInWait]"
+                          name="SecondsInWait"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IntervalDateKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalDateKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IntervalDateKey]"
+                          name="IntervalDateKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[AgentKey]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[AgentKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[AgentKey]"
+                          name="AgentKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IntervalStartTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalStartTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IntervalStartTime]"
+                          name="IntervalStartTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[Duration]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[Duration]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[Duration]"
+                          name="Duration"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdCalls]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredAcdCalls]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdCalls]"
+                          name="AnsweredAcdCalls"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsAvailable]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsAvailable]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsAvailable]"
+                          name="SecondsAvailable"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsUnavailable]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsUnavailable]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsUnavailable]"
+                          name="SecondsUnavailable"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsLoggedIn]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsLoggedIn]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsLoggedIn]"
+                          name="SecondsLoggedIn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInHold]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInHold]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInHold]"
+                          name="SecondsInHold"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsOnOutboundCalls]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsOnOutboundCalls]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsOnOutboundCalls]"
+                          name="SecondsOnOutboundCalls"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[RingTime]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[RingTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[RingTime]"
+                          name="RingTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsProductive]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsProductive]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsProductive]"
+                          name="SecondsProductive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInTalk]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInTalk]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInTalk]"
+                          name="SecondsInTalk"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsToAbondon]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsToAbondon]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsToAbondon]"
+                          name="SecondsToAbondon"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SummaryId]"
+                          dataType="i4"
+                          name="SummaryId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[WorkgroupKey]"
+                          dataType="i4"
+                          name="WorkgroupKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[Intervalkey]"
+                          dataType="i4"
+                          name="Intervalkey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[IncomingCalls]"
+                          dataType="i4"
+                          name="IncomingCalls" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsHandling]"
+                          dataType="i4"
+                          name="SecondsHandling" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsAfterCall]"
+                          dataType="i4"
+                          name="SecondsAfterCall" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInWait]"
+                          dataType="i4"
+                          name="SecondsInWait" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalDateKey]"
+                          dataType="i4"
+                          name="IntervalDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[AgentKey]"
+                          dataType="i2"
+                          name="AgentKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalStartTime]"
+                          dataType="dbTimeStamp"
+                          name="IntervalStartTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[Duration]"
+                          dataType="i4"
+                          name="Duration" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredAcdCalls]"
+                          dataType="i4"
+                          name="AnsweredAcdCalls" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsAvailable]"
+                          dataType="i4"
+                          name="SecondsAvailable" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsUnavailable]"
+                          dataType="i4"
+                          name="SecondsUnavailable" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsLoggedIn]"
+                          dataType="i4"
+                          name="SecondsLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInHold]"
+                          dataType="i4"
+                          name="SecondsInHold" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsOnOutboundCalls]"
+                          dataType="i4"
+                          name="SecondsOnOutboundCalls" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[RingTime]"
+                          dataType="i4"
+                          name="RingTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsProductive]"
+                          dataType="i4"
+                          name="SecondsProductive" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInTalk]"
+                          dataType="i4"
+                          name="SecondsInTalk" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsToAbondon]"
+                          dataType="i4"
+                          name="SecondsToAbondon" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SummaryId]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SummaryId]"
+                          name="SummaryId" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalDateKey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalDateKey]"
+                          name="IntervalDateKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[AgentKey]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[AgentKey]"
+                          name="AgentKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[WorkgroupKey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[WorkgroupKey]"
+                          name="WorkgroupKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[Intervalkey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[Intervalkey]"
+                          name="Intervalkey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalStartTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalStartTime]"
+                          name="IntervalStartTime" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[Duration]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[Duration]"
+                          name="Duration" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[IncomingCalls]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[IncomingCalls]"
+                          name="IncomingCalls" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredAcdCalls]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredAcdCalls]"
+                          name="AnsweredAcdCalls" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsAvailable]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsAvailable]"
+                          name="SecondsAvailable" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsUnavailable]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsUnavailable]"
+                          name="SecondsUnavailable" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsLoggedIn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsLoggedIn]"
+                          name="SecondsLoggedIn" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsHandling]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsHandling]"
+                          name="SecondsHandling" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInHold]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInHold]"
+                          name="SecondsInHold" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsAfterCall]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsAfterCall]"
+                          name="SecondsAfterCall" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsOnOutboundCalls]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsOnOutboundCalls]"
+                          name="SecondsOnOutboundCalls" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[RingTime]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[RingTime]"
+                          name="RingTime" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsProductive]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsProductive]"
+                          name="SecondsProductive" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInTalk]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInTalk]"
+                          name="SecondsInTalk" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInWait]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInWait]"
+                          name="SecondsInWait" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsToAbondon]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsToAbondon]"
+                          name="SecondsToAbondon" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="FactAgentInterval"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FactAgentInterval]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SummaryId]"
+                          cachedDataType="i4"
+                          cachedName="SummaryId"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SummaryId]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SummaryId]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[WorkgroupKey]"
+                          cachedDataType="i4"
+                          cachedName="WorkgroupKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[Intervalkey]"
+                          cachedDataType="i4"
+                          cachedName="Intervalkey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[Intervalkey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[IncomingCalls]"
+                          cachedDataType="i4"
+                          cachedName="IncomingCalls"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IncomingCalls]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IncomingCalls]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsHandling]"
+                          cachedDataType="i4"
+                          cachedName="SecondsHandling"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsHandling]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsHandling]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsAfterCall]"
+                          cachedDataType="i4"
+                          cachedName="SecondsAfterCall"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsAfterCall]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsAfterCall]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsInWait]"
+                          cachedDataType="i4"
+                          cachedName="SecondsInWait"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInWait]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInWait]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[IntervalDateKey]"
+                          cachedDataType="i4"
+                          cachedName="IntervalDateKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalDatekey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IntervalDateKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[AgentKey]"
+                          cachedDataType="i2"
+                          cachedName="AgentKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[AgentKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[AgentKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[IntervalStartTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="IntervalStartTime"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalStartTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[IntervalStartTime]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[Duration]"
+                          cachedDataType="i4"
+                          cachedName="Duration"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[Duration]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[Duration]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[AnsweredAcdCalls]"
+                          cachedDataType="i4"
+                          cachedName="AnsweredAcdCalls"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredAcdCalls]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdCalls]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsAvailable]"
+                          cachedDataType="i4"
+                          cachedName="SecondsAvailable"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsAvailable]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsAvailable]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsUnavailable]"
+                          cachedDataType="i4"
+                          cachedName="SecondsUnavailable"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsUnavailable]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsUnavailable]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsLoggedIn]"
+                          cachedDataType="i4"
+                          cachedName="SecondsLoggedIn"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsLoggedIn]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsLoggedIn]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsInHold]"
+                          cachedDataType="i4"
+                          cachedName="SecondsInHold"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInHold]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInHold]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsProductive]"
+                          cachedDataType="i4"
+                          cachedName="SecondsProductive"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsProductive]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsProductive]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsInTalk]"
+                          cachedDataType="i4"
+                          cachedName="SecondsInTalk"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInTalk]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsInTalk]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].Columns[SecondsToAbondon]"
+                          cachedDataType="i4"
+                          cachedName="SecondsToAbondon"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsToAbondon]"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output].Columns[SecondsToAbondon]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[AgentIntervalId]"
+                          dataType="i4"
+                          name="AgentIntervalId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SummaryId]"
+                          dataType="i4"
+                          name="SummaryId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalDatekey]"
+                          dataType="i4"
+                          name="IntervalDatekey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[AgentKey]"
+                          dataType="i2"
+                          name="AgentKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupKey]"
+                          dataType="i4"
+                          name="WorkgroupKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalKey]"
+                          dataType="i4"
+                          name="IntervalKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalStartTime]"
+                          dataType="dbTimeStamp"
+                          name="IntervalStartTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[Duration]"
+                          dataType="i4"
+                          name="Duration" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredAcdCalls]"
+                          dataType="i4"
+                          name="AnsweredAcdCalls" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[IncomingCalls]"
+                          dataType="i4"
+                          name="IncomingCalls" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsAvailable]"
+                          dataType="i4"
+                          name="SecondsAvailable" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsUnavailable]"
+                          dataType="i4"
+                          name="SecondsUnavailable" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsLoggedIn]"
+                          dataType="i4"
+                          name="SecondsLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsProductive]"
+                          dataType="i4"
+                          name="SecondsProductive" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInTalk]"
+                          dataType="i4"
+                          name="SecondsInTalk" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsAfterCall]"
+                          dataType="i4"
+                          name="SecondsAfterCall" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInHold]"
+                          dataType="i4"
+                          name="SecondsInHold" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsHandling]"
+                          dataType="i4"
+                          name="SecondsHandling" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsToAbondon]"
+                          dataType="i4"
+                          name="SecondsToAbondon" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInWait]"
+                          dataType="i4"
+                          name="SecondsInWait" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW.Paths[OLE DB Source Output]"
+                  endId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentInterval Sq\ININ AgentInterval Fact Populate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ED7E6CCC-0808-4052-B49C-29F7D4FBBC80}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ AgentInterval Fact Populate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW AgentInterval Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BF254478-DC52-4CA7-BDFC-25803B63C572}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::Staging2EDWDataFlowId] &gt; 0"
+          DTS:From="Package\ININ Stg 2 EDW AgentInterval Sq\ININ AgentInterval Fact Populate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW AgentInterval Sq.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{296CF8D5-5239-449C-84D4-A55E35D72E53}"
+          DTS:From="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\ININ Stg 2 EDW AgentInterval Sq\EndFlow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7C12B174-3F5A-435D-ACE2-C50921A5FB8A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{31B4AD91-81C5-4D4D-8CF8-E2E54BC0D656}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ Stg 2 EDW AgentInterval Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4DECBE8A-2F40-4C50-AD7C-A9E9088CB346}"
+      DTS:From="Package\ININ Stg 2 EDW AgentInterval Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq\EndFlow"
+          TopLeft="51,258" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW"
+          TopLeft="67,130" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq\ININ AgentInterval Fact Populate"
+          TopLeft="22,20" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="140.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37,68"
+              Start="0,0"
+              End="37,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="33,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33,34"
+                    Point2="37,34"
+                    Point3="37,38" />
+                  <mssgle:LineSegment
+                    End="37,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="10.5,39,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq.PrecedenceConstraints[Constraint 1]"
+          TopLeft="177.5,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-66,86"
+              Start="0,0"
+              End="-66,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-62,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62,43"
+                    Point2="-66,43"
+                    Point3="-66,47" />
+                  <mssgle:LineSegment
+                    End="-66,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\FactAgentInterval"
+          TopLeft="735,321" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View"
+          TopLeft="560,141" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW.Paths[OLE DB Source Output]"
+          TopLeft="645,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172,138"
+              Start="0,0"
+              End="172,130.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65"
+                    Point2="0,69"
+                    Point3="4,69" />
+                  <mssgle:LineSegment
+                    End="168,69" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168,69"
+                    Point2="172,69"
+                    Point3="172,73" />
+                  <mssgle:LineSegment
+                    End="172,130.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW AgentInterval Sq\ININ Agent Interval Stg2EDW\AgentInterval View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

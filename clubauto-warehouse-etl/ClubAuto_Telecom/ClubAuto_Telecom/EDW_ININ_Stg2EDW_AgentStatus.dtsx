@@ -1,0 +1,906 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{B4680442-078E-47B9-8CF8-C78BC0B384AD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_Stg2EDW_AgentStatus"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{7C969380-803A-4BE8-9391-2C80874241D6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{4BA3536F-25BB-4DC6-9D0C-3D6002C142FF}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C2E55AEB-4D60-483E-9BDD-F33E130EB700}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F886172E-3EDC-4E66-9279-5D3473DAC6BA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Staging2EDWDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{53301CB6-D869-4341-8FD0-51CE6D209824}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ Stg 2 EDW AgentStatusl Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{ABA7F950-4E56-4D83-AC1C-2CEB2EB6DC81}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ Stg 2 EDW AgentStatusl Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentStatusl Sq\EndFlow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E4CA536C-B7BA-4E7C-9868-AD81939C76F5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EndFlow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{1490A2AA-2A48-4C44-A722-1642659F3CA8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ Agent Status Stg2EDW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AgentStatus View"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[vw_ETL_ININ_AgentStatus_Fact_Populate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentKey]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentKey]"
+                          name="AgentKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentStatusDatekey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentStatusDatekey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentStatusDatekey]"
+                          name="AgentStatusDatekey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentStatuskey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentStatuskey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentStatuskey]"
+                          name="AgentStatuskey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentLogInStatusKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentLogInStatusKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentLogInStatusKey]"
+                          name="AgentLogInStatusKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[StatusStartTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[StatusStartTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[StatusStartTime]"
+                          name="StatusStartTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[StatusEndTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[StatusEndTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[StatusEndTime]"
+                          name="StatusEndTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[Duration]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[Duration]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[Duration]"
+                          name="Duration"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentKey]"
+                          dataType="i2"
+                          name="AgentKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentStatusDatekey]"
+                          dataType="i4"
+                          name="AgentStatusDatekey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentStatuskey]"
+                          dataType="i4"
+                          name="AgentStatuskey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[AgentLogInStatusKey]"
+                          dataType="i4"
+                          name="AgentLogInStatusKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[StatusStartTime]"
+                          dataType="dbTimeStamp"
+                          name="StatusStartTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[StatusEndTime]"
+                          dataType="dbTimeStamp"
+                          name="StatusEndTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].ExternalColumns[Duration]"
+                          dataType="i4"
+                          name="Duration" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentKey]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentKey]"
+                          name="AgentKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentStatusDatekey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentStatusDatekey]"
+                          name="AgentStatusDatekey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentStatuskey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentStatuskey]"
+                          name="AgentStatuskey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentLogInStatusKey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[AgentLogInStatusKey]"
+                          name="AgentLogInStatusKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[StatusStartTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[StatusStartTime]"
+                          name="StatusStartTime" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[StatusEndTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[StatusEndTime]"
+                          name="StatusEndTime" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[Duration]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[Duration]"
+                          name="Duration" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="FactAgentStatus"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FactAgentStatus]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[AgentKey]"
+                          cachedDataType="i2"
+                          cachedName="AgentKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[Agentkey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[AgentStatusDatekey]"
+                          cachedDataType="i4"
+                          cachedName="AgentStatusDatekey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentStatusDateKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentStatusDatekey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[AgentStatuskey]"
+                          cachedDataType="i4"
+                          cachedName="AgentStatuskey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentStatusKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentStatuskey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[AgentLogInStatusKey]"
+                          cachedDataType="i4"
+                          cachedName="AgentLogInStatusKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentLogInStatuskey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[AgentLogInStatusKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[StatusStartTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="StatusStartTime"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[StatusStartTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[StatusStartTime]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[StatusEndTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="StatusEndTime"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[StatusEndTime]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[StatusEndTime]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].Columns[Duration]"
+                          cachedDataType="i4"
+                          cachedName="Duration"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[Duration]"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output].Columns[Duration]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentStatusId]"
+                          dataType="i4"
+                          name="AgentStatusId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[Agentkey]"
+                          dataType="i2"
+                          name="Agentkey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentStatusDateKey]"
+                          dataType="i4"
+                          name="AgentStatusDateKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentStatusKey]"
+                          dataType="i4"
+                          name="AgentStatusKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[AgentLogInStatuskey]"
+                          dataType="i4"
+                          name="AgentLogInStatuskey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[Duration]"
+                          dataType="i4"
+                          name="Duration" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[StatusStartTime]"
+                          dataType="dbTimeStamp"
+                          name="StatusStartTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input].ExternalColumns[StatusEndTime]"
+                          dataType="dbTimeStamp"
+                          name="StatusEndTime" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW.Paths[OLE DB Source Output]"
+                  endId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ AgentIStatus Fact Populate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4541E049-E6D5-49D8-AE23-B329B654B7D4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ AgentIStatus Fact Populate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW AgentStatusl Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8860B091-AC2E-4F48-B21C-80A7D25BADAC}"
+          DTS:From="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ AgentIStatus Fact Populate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW AgentStatusl Sq.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{C3B226AC-9230-4F10-A6D6-C68F76157D7B}"
+          DTS:From="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\ININ Stg 2 EDW AgentStatusl Sq\EndFlow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C5536345-8512-4DDD-90FB-1C552BB59171}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{335FA513-B5B2-432D-A111-C5F6E8133728}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ Stg 2 EDW AgentStatusl Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{090CCFBF-EC23-4A57-BD32-FCB7D7769351}"
+      DTS:From="Package\ININ Stg 2 EDW AgentStatusl Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq\EndFlow"
+          TopLeft="51,258" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW"
+          TopLeft="67,130" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ AgentIStatus Fact Populate"
+          TopLeft="22,20" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="139,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,68"
+              Start="0,0"
+              End="35,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="31,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31,34"
+                    Point2="35,34"
+                    Point3="35,38" />
+                  <mssgle:LineSegment
+                    End="35,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq.PrecedenceConstraints[Constraint 1]"
+          TopLeft="174,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-62.5,86"
+              Start="0,0"
+              End="-62.5,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-58.5,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-58.5,43"
+                    Point2="-62.5,43"
+                    Point3="-62.5,47" />
+                  <mssgle:LineSegment
+                    End="-62.5,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View"
+          TopLeft="490,186" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus"
+          TopLeft="676,367" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW.Paths[OLE DB Source Output]"
+          TopLeft="571.5,228">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="183,139"
+              Start="0,0"
+              End="183,131.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.5"
+                    Point2="0,69.5"
+                    Point3="4,69.5" />
+                  <mssgle:LineSegment
+                    End="179,69.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="179,69.5"
+                    Point2="183,69.5"
+                    Point3="183,73.5" />
+                  <mssgle:LineSegment
+                    End="183,131.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\AgentStatus View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW AgentStatusl Sq\ININ Agent Status Stg2EDW\FactAgentStatus">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

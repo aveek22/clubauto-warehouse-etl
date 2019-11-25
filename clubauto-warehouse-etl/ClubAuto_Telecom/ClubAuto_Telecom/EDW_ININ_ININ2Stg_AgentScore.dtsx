@@ -1,0 +1,1078 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{77D69F3D-322C-4467-85AF-649B8222012B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_ININ2Stg_AgentScore"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{14255059-89A4-4C04-A663-0FB7434FA5B8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{AACB95FC-732E-461B-B97B-52E303C717A2}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{967E8B20-69C4-420E-BADF-8750184C6EB8}"
+      DTS:ObjectName="ININQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Select i.ICUserID, q.Score, q.MaxScore, q.RankName, q.ScoringDate, q.IsFailed, Convert(dec(6,3), 100 * (q.Score/q.MaxScore)) AS ScorePercentage 				From IR_QForm q Inner Join Individual i ON q.ScoringIndivId = i.IndivID 				Where q.MaxScore &gt; 0 				Order By q.ScoringDate</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D7D62F2-9CB4-4BD7-A168-A93BAFB93212}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ININ2StagingDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DDDE4477-F851-4776-B651-A85AF75B34A0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{00CE972B-9649-46AE-AF5D-13C1F43A3319}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ AgentScore 2 Staging Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{56CB9AA2-57EE-4DAC-8FC1-3B31AB03A7E6}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ AgentScore 2 Staging Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ AgentScore 2 Staging Sq\End Flow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{27E3C160-3DA5-4E8D-80F3-813E808F97FE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="End Flow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ININ2StagingDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E25CCE4F-59C3-4BB8-AFCB-A0F3F38C5E2A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ AgentScore 2 Staging Flow"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          name="BatchId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::BatchId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::BatchId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ININ IR_QForm"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select IndivTypeID, LastName, FirstName, Department, WebLogin, Active, ICUserID, OwnerID
+
+  From Individual</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">$Package::ININQuery</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Connections[OleDbConnection]"
+                      connectionManagerID="{55C16A85-6504-4D70-A1F6-4FE49F686A29}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ININ4Prod]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ICUserID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[ICUserID]"
+                          length="50"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ICUserID]"
+                          name="ICUserID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[Score]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[Score]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[Score]"
+                          name="Score"
+                          precision="19"
+                          scale="6"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[MaxScore]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[MaxScore]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[MaxScore]"
+                          name="MaxScore"
+                          precision="19"
+                          scale="6"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[RankName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[RankName]"
+                          length="40"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[RankName]"
+                          name="RankName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ScoringDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[ScoringDate]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ScoringDate]"
+                          name="ScoringDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[IsFailed]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[IsFailed]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[IsFailed]"
+                          name="IsFailed"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ScorePercentage]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[ScorePercentage]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ScorePercentage]"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[ICUserID]"
+                          dataType="wstr"
+                          length="50"
+                          name="ICUserID" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[Score]"
+                          dataType="numeric"
+                          name="Score"
+                          precision="19"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[MaxScore]"
+                          dataType="numeric"
+                          name="MaxScore"
+                          precision="19"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[RankName]"
+                          dataType="wstr"
+                          length="40"
+                          name="RankName" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[ScoringDate]"
+                          dataType="dbTimeStamp"
+                          name="ScoringDate" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[IsFailed]"
+                          dataType="ui1"
+                          name="IsFailed" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].ExternalColumns[ScorePercentage]"
+                          dataType="numeric"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ICUserID]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ICUserID]"
+                          name="ICUserID" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[Score]"
+                          dataType="numeric"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[Score]"
+                          name="Score"
+                          precision="19"
+                          scale="6" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[MaxScore]"
+                          dataType="numeric"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[MaxScore]"
+                          name="MaxScore"
+                          precision="19"
+                          scale="6" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[RankName]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[RankName]"
+                          name="RankName" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ScoringDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ScoringDate]"
+                          name="ScoringDate" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[IsFailed]"
+                          dataType="ui1"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[IsFailed]"
+                          name="IsFailed" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ScorePercentage]"
+                          dataType="numeric"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ScorePercentage]"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="stg AgentScore"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ININ].[AgentScore]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Connections[OleDbConnection]"
+                      connectionManagerID="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[ICUserID]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ICUserID"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ICUserID]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ICUserID]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[Score]"
+                          cachedDataType="numeric"
+                          cachedName="Score"
+                          cachedPrecision="19"
+                          cachedScale="6"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[Score]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[Score]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[MaxScore]"
+                          cachedDataType="numeric"
+                          cachedName="MaxScore"
+                          cachedPrecision="19"
+                          cachedScale="6"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[MaxScore]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[MaxScore]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[RankName]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="RankName"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[RankName]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[RankName]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[ScoringDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ScoringDate"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScoringDate]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ScoringDate]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[IsFailed]"
+                          cachedDataType="ui1"
+                          cachedName="IsFailed"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[IsFailed]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[IsFailed]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[ScorePercentage]"
+                          cachedDataType="numeric"
+                          cachedName="ScorePercentage"
+                          cachedPrecision="6"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScorePercentage]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output].Columns[ScorePercentage]" />
+                        <inputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].Columns[BatchId]"
+                          cachedDataType="i4"
+                          cachedName="BatchId"
+                          externalMetadataColumnId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ICUserID]"
+                          dataType="wstr"
+                          length="50"
+                          name="ICUserID" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[Score]"
+                          dataType="numeric"
+                          name="Score"
+                          precision="19"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[MaxScore]"
+                          dataType="numeric"
+                          name="MaxScore"
+                          precision="19"
+                          scale="6" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[RankName]"
+                          dataType="wstr"
+                          length="40"
+                          name="RankName" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScoringDate]"
+                          dataType="dbTimeStamp"
+                          name="ScoringDate" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[IsFailed]"
+                          dataType="ui1"
+                          name="IsFailed" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScorePercentage]"
+                          dataType="numeric"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          dataType="i4"
+                          name="BatchId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow.Paths[Derived Column Output]"
+                  endId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow.Paths[OLE DB Source Output]"
+                  endId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ AgentScore 2 Staging Sq\ININ To Staging AgentScore"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DFA3721D-34B4-431C-905B-7D5BFDCEDA3A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ To Staging AgentScore"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ININ2StagingDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ AgentScore 2 Staging Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C2D67167-AA56-4624-B546-4563EBDD28DD}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ININ2StagingDataFlowId] &gt; 0"
+          DTS:From="Package\ININ AgentScore 2 Staging Sq\ININ To Staging AgentScore"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ AgentScore 2 Staging Sq.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{580A0953-F3C6-4F6D-83C1-FD27C98E699B}"
+          DTS:From="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\ININ AgentScore 2 Staging Sq\End Flow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3E530951-787D-4A16-B26F-F49CF4877074}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1DC2001D-4D86-4401-8BB0-FC1C724E6AEC}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ AgentScore 2 Staging Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{566BD700-1159-41A6-9E02-8FCA860F359B}"
+      DTS:From="Package\ININ AgentScore 2 Staging Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\ININ AgentScore 2 Staging Sq\End Flow"
+          TopLeft="28,277" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow"
+          TopLeft="27,157" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ To Staging AgentScore"
+          TopLeft="22,20" />
+        <EdgeLayout
+          Id="Package\ININ AgentScore 2 Staging Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="129,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,95"
+              Start="0,0"
+              End="14.5,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.5"
+                    Point2="0,47.5"
+                    Point3="4,47.5" />
+                  <mssgle:LineSegment
+                    End="10.5,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,47.5"
+                    Point2="14.5,47.5"
+                    Point3="14.5,51.5" />
+                  <mssgle:LineSegment
+                    End="14.5,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.75,52.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ AgentScore 2 Staging Sq.PrecedenceConstraints[Constraint 2]"
+          TopLeft="143.5,199">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53.5,78"
+              Start="0,0"
+              End="-53.5,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="-4,39" />
+                  <mssgle:LineSegment
+                    End="-49.5,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.5,39"
+                    Point2="-53.5,39"
+                    Point3="-53.5,43" />
+                  <mssgle:LineSegment
+                    End="-53.5,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ AgentScore 2 Staging Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm"
+          TopLeft="343,138" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\Derived Column"
+          TopLeft="593,234" />
+        <EdgeLayout
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow.Paths[OLE DB Source Output]"
+          TopLeft="420.5,180">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="250.5,54"
+              Start="0,0"
+              End="250.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="246.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="246.5,27"
+                    Point2="250.5,27"
+                    Point3="250.5,31" />
+                  <mssgle:LineSegment
+                    End="250.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,42"
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore"
+          TopLeft="662,398" />
+        <EdgeLayout
+          Id="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow.Paths[Derived Column Output]"
+          TopLeft="671,276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67,122"
+              Start="0,0"
+              End="67,114.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57"
+                    Point2="0,61"
+                    Point3="4,61" />
+                  <mssgle:LineSegment
+                    End="63,61" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63,61"
+                    Point2="67,61"
+                    Point3="67,65" />
+                  <mssgle:LineSegment
+                    End="67,114.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\stg AgentScore">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ AgentScore 2 Staging Sq\ININ AgentScore 2 Staging Flow\ININ IR_QForm">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

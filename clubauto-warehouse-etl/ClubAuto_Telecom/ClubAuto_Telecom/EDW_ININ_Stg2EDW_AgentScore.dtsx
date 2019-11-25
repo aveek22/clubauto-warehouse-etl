@@ -1,0 +1,801 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{D8E86CC5-7A0A-4AE5-8C95-67491538F891}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_Stg2EDW_AgentScore"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{D3EC5C78-5502-4148-87AA-0B2AD1A074C1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{790CAD4E-4B2F-42B9-B3FC-47B4A9C0390E}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E597B7C9-7E3B-42AB-8285-DB50E76EA011}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B054280A-4447-4171-8727-3D57A439A313}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Staging2EDWDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1176AF90-C0AE-4DC3-B138-94B45306992C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ Stg 2 EDW AgentScore Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{D87A0E02-CFA4-4DE4-9125-83E5C71FE577}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ Stg 2 EDW AgentScore Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentScore Sq\EndFlow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5AEA584D-017D-42B8-982D-31C270414FE7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EndFlow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{00592326-73A5-4994-9BCA-FD0994737175}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ Agent Score Stg2EDW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="AgentScore_View"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select * From 
+vw_ETL_ININ_AgentScore_Fact_Populate
+Order By ScoreDatekey, Agentkey</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[AgentKey]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].ExternalColumns[AgentKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[AgentKey]"
+                          name="AgentKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[ScoreDatekey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].ExternalColumns[ScoreDatekey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[ScoreDatekey]"
+                          name="ScoreDatekey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[ScorePercentage]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].ExternalColumns[ScorePercentage]"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[ScorePercentage]"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].ExternalColumns[AgentKey]"
+                          dataType="i2"
+                          name="AgentKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].ExternalColumns[ScoreDatekey]"
+                          dataType="i4"
+                          name="ScoreDatekey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].ExternalColumns[ScorePercentage]"
+                          dataType="numeric"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[AgentKey]"
+                          dataType="i2"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[AgentKey]"
+                          name="AgentKey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ScoreDatekey]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ScoreDatekey]"
+                          name="ScoreDatekey" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ScorePercentage]"
+                          dataType="numeric"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ScorePercentage]"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="FactAgentScore"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[FactAgentScore]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Connections[OleDbConnection]"
+                      connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].Columns[AgentKey]"
+                          cachedDataType="i2"
+                          cachedName="AgentKey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[AgentKey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[AgentKey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].Columns[ScoreDatekey]"
+                          cachedDataType="i4"
+                          cachedName="ScoreDatekey"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScoreDatekey]"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[ScoreDatekey]" />
+                        <inputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].Columns[ScorePercentage]"
+                          cachedDataType="numeric"
+                          cachedName="ScorePercentage"
+                          cachedPrecision="6"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScorePercentage]"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output].Columns[ScorePercentage]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScoreId]"
+                          dataType="i4"
+                          name="ScoreId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[AgentKey]"
+                          dataType="i2"
+                          name="AgentKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScoreDatekey]"
+                          dataType="i4"
+                          name="ScoreDatekey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input].ExternalColumns[ScorePercentage]"
+                          dataType="numeric"
+                          name="ScorePercentage"
+                          precision="6"
+                          scale="3" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW.Paths[OLE DB Source Output]"
+                  endId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Stg 2 EDW AgentScore Sq\ININ AgentI Score Fact Populate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{750C1EFC-014F-4435-A018-5868FC70C142}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ AgentI Score Fact Populate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW AgentScore Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C50AB39A-00FD-452A-9172-1E970E7D71FB}"
+          DTS:From="Package\ININ Stg 2 EDW AgentScore Sq\ININ AgentI Score Fact Populate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Stg 2 EDW AgentScore Sq.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D0F8BD12-5DCE-4F7B-ADCB-7768DD29BE2E}"
+          DTS:From="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\ININ Stg 2 EDW AgentScore Sq\EndFlow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8C83C527-F567-423A-92B4-814E6B8BE6B1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{80E993D5-6D58-49B3-A85A-6928A6BD6286}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ Stg 2 EDW AgentScore Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6157DF8A-4ACD-44FE-8B61-4031985B4C21}"
+      DTS:From="Package\ININ Stg 2 EDW AgentScore Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\ININ Stg 2 EDW AgentScore Sq\EndFlow"
+          TopLeft="51,258" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW"
+          TopLeft="67,130" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\ININ Stg 2 EDW AgentScore Sq\ININ AgentI Score Fact Populate"
+          TopLeft="22,20" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentScore Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="139,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.5,68"
+              Start="0,0"
+              End="33.5,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="29.5,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5,34"
+                    Point2="33.5,34"
+                    Point3="33.5,38" />
+                  <mssgle:LineSegment
+                    End="33.5,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentScore Sq.PrecedenceConstraints[Constraint 1]"
+          TopLeft="172.5,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61,86"
+              Start="0,0"
+              End="-61,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-57,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57,43"
+                    Point2="-61,43"
+                    Point3="-61,47" />
+                  <mssgle:LineSegment
+                    End="-61,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ Stg 2 EDW AgentScore Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View"
+          TopLeft="508,168" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore"
+          TopLeft="668,310" />
+        <EdgeLayout
+          Id="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW.Paths[OLE DB Source Output]"
+          TopLeft="589.5,210">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155.5,100"
+              Start="0,0"
+              End="155.5,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="4,50" />
+                  <mssgle:LineSegment
+                    End="151.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="151.5,50"
+                    Point2="155.5,50"
+                    Point3="155.5,54" />
+                  <mssgle:LineSegment
+                    End="155.5,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\AgentScore_View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Stg 2 EDW AgentScore Sq\ININ Agent Score Stg2EDW\FactAgentScore">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

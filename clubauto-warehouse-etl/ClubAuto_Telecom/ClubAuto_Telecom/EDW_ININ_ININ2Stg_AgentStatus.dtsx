@@ -1,0 +1,1417 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{071F77C5-B90D-4B22-849C-6D7D006EE296}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_ININ2Stg_AgentStatus"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{11E1E3D5-0A12-498F-A04D-0FA355A4821A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{04AC2131-6C2C-41F9-BB1E-12C785E419F7}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{22EF2BEA-223A-4E9A-ABDC-347C190D1F64}"
+      DTS:ObjectName="ININQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Select  						UserId, StatusDateTime, StatusDateTimeGMT, ChangedStatus, ChangedStatusGroup, ChangedLoggedIn, ChangedAcdLoggedIn, StatusKey, StatusGroup, LoggedIn, AcdLoggedIn, StatusDnd,  						StatusAcw, EndDateTime, EndDateTimeGMT, StateDuration, SeqNo, I3TimeStampGMT, SiteId, SubSiteId 						From AgentActivityLog  Where StatusDateTime &gt;=   '2014-07-31 19:21:40'</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4909FDC3-93CF-40DC-8370-ABCE6A0F516B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ININ2StagingDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4DB6FBD1-E3DD-4405-8A7B-2878CDA25790}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DD35FEB6-AF68-4096-9769-734DE59F12E0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ AgentStatus 2 Staging Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E773EB32-2256-433B-9D85-D1B861A3C884}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ AgentStatus 2 Staging Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ AgentStatus 2 Staging Sq\End Flow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CA259D3E-2607-4AEB-93E6-38DBB9E52C5B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="End Flow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ININ2StagingDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{3296DAE6-64D1-4D0B-9C22-CA2A077DFB49}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ AgentStatus 2 Staging Flow"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          name="BatchId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::BatchId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::BatchId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ININ AgentActivityLog"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select IndivTypeID, LastName, FirstName, Department, WebLogin, Active, ICUserID, OwnerID
+
+  From Individual</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">$Package::ININQuery</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Connections[OleDbConnection]"
+                      connectionManagerID="{55C16A85-6504-4D70-A1F6-4FE49F686A29}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ININ4Prod]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[UserId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                          length="50"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[UserId]"
+                          name="UserId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusDateTime]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDateTime]"
+                          name="StatusDateTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusDateTimeGMT]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDateTimeGMT]"
+                          name="StatusDateTimeGMT"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedStatus]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedStatus]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedStatus]"
+                          name="ChangedStatus"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedStatusGroup]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedStatusGroup]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedStatusGroup]"
+                          name="ChangedStatusGroup"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedLoggedIn]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedLoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedLoggedIn]"
+                          name="ChangedLoggedIn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedAcdLoggedIn]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedAcdLoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedAcdLoggedIn]"
+                          name="ChangedAcdLoggedIn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusKey]"
+                          length="50"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusKey]"
+                          name="StatusKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusGroup]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusGroup]"
+                          length="50"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusGroup]"
+                          name="StatusGroup"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[LoggedIn]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[LoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[LoggedIn]"
+                          name="LoggedIn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[AcdLoggedIn]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[AcdLoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[AcdLoggedIn]"
+                          name="AcdLoggedIn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDnd]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusDnd]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDnd]"
+                          name="StatusDnd"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusAcw]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusAcw]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusAcw]"
+                          name="StatusAcw"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[EndDateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[EndDateTime]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[EndDateTime]"
+                          name="EndDateTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[EndDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[EndDateTimeGMT]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[EndDateTimeGMT]"
+                          name="EndDateTimeGMT"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StateDuration]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StateDuration]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StateDuration]"
+                          name="StateDuration"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SeqNo]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[SeqNo]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SeqNo]"
+                          name="SeqNo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[I3TimeStampGMT]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[I3TimeStampGMT]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[I3TimeStampGMT]"
+                          name="I3TimeStampGMT"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SiteId]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[SiteId]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SiteId]"
+                          name="SiteId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SubSiteId]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[SubSiteId]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SubSiteId]"
+                          name="SubSiteId"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                          dataType="wstr"
+                          length="50"
+                          name="UserId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusDateTime]"
+                          dataType="dbTimeStamp"
+                          name="StatusDateTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          name="StatusDateTimeGMT" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedStatus]"
+                          dataType="i2"
+                          name="ChangedStatus" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedStatusGroup]"
+                          dataType="i2"
+                          name="ChangedStatusGroup" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedLoggedIn]"
+                          dataType="i2"
+                          name="ChangedLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[ChangedAcdLoggedIn]"
+                          dataType="i2"
+                          name="ChangedAcdLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="StatusKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusGroup]"
+                          dataType="wstr"
+                          length="50"
+                          name="StatusGroup" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[LoggedIn]"
+                          dataType="i2"
+                          name="LoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[AcdLoggedIn]"
+                          dataType="i2"
+                          name="AcdLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusDnd]"
+                          dataType="i2"
+                          name="StatusDnd" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StatusAcw]"
+                          dataType="i2"
+                          name="StatusAcw" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[EndDateTime]"
+                          dataType="dbTimeStamp"
+                          name="EndDateTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[EndDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          name="EndDateTimeGMT" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[StateDuration]"
+                          dataType="i4"
+                          name="StateDuration" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[SeqNo]"
+                          dataType="i2"
+                          name="SeqNo" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[I3TimeStampGMT]"
+                          dataType="dbTimeStamp"
+                          name="I3TimeStampGMT" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[SiteId]"
+                          dataType="i2"
+                          name="SiteId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].ExternalColumns[SubSiteId]"
+                          dataType="i2"
+                          name="SubSiteId" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                          name="UserId" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusDateTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusDateTime]"
+                          name="StatusDateTime" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusDateTimeGMT]"
+                          name="StatusDateTimeGMT" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedStatus]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedStatus]"
+                          name="ChangedStatus" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedStatusGroup]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedStatusGroup]"
+                          name="ChangedStatusGroup" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedLoggedIn]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedLoggedIn]"
+                          name="ChangedLoggedIn" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedAcdLoggedIn]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ChangedAcdLoggedIn]"
+                          name="ChangedAcdLoggedIn" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusKey]"
+                          name="StatusKey" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusGroup]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusGroup]"
+                          name="StatusGroup" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[LoggedIn]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[LoggedIn]"
+                          name="LoggedIn" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[AcdLoggedIn]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[AcdLoggedIn]"
+                          name="AcdLoggedIn" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusDnd]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusDnd]"
+                          name="StatusDnd" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusAcw]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StatusAcw]"
+                          name="StatusAcw" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[EndDateTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[EndDateTime]"
+                          name="EndDateTime" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[EndDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[EndDateTimeGMT]"
+                          name="EndDateTimeGMT" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StateDuration]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[StateDuration]"
+                          name="StateDuration" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[SeqNo]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[SeqNo]"
+                          name="SeqNo" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[I3TimeStampGMT]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[I3TimeStampGMT]"
+                          name="I3TimeStampGMT" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[SiteId]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[SiteId]"
+                          name="SiteId" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[SubSiteId]"
+                          dataType="i2"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[SubSiteId]"
+                          name="SubSiteId" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="stg AgentActivityLog"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ININ].[AgentActivityLog]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Connections[OleDbConnection]"
+                      connectionManagerID="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[UserId]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="UserId"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[UserId]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StatusDateTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="StatusDateTime"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusDateTime]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDateTime]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StatusDateTimeGMT]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="StatusDateTimeGMT"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusDateTimeGMT]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDateTimeGMT]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[ChangedStatus]"
+                          cachedDataType="i2"
+                          cachedName="ChangedStatus"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedStatus]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedStatus]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[ChangedStatusGroup]"
+                          cachedDataType="i2"
+                          cachedName="ChangedStatusGroup"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedStatusGroup]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedStatusGroup]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[ChangedLoggedIn]"
+                          cachedDataType="i2"
+                          cachedName="ChangedLoggedIn"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedLoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedLoggedIn]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[ChangedAcdLoggedIn]"
+                          cachedDataType="i2"
+                          cachedName="ChangedAcdLoggedIn"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedAcdLoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[ChangedAcdLoggedIn]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StatusKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="StatusKey"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusKey]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusKey]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StatusGroup]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="StatusGroup"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusGroup]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusGroup]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[LoggedIn]"
+                          cachedDataType="i2"
+                          cachedName="LoggedIn"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[LoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[LoggedIn]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[AcdLoggedIn]"
+                          cachedDataType="i2"
+                          cachedName="AcdLoggedIn"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[AcdLoggedIn]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[AcdLoggedIn]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StatusDnd]"
+                          cachedDataType="i2"
+                          cachedName="StatusDnd"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusDnd]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusDnd]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StatusAcw]"
+                          cachedDataType="i2"
+                          cachedName="StatusAcw"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusAcw]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StatusAcw]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[EndDateTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="EndDateTime"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[EndDateTime]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[EndDateTime]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[EndDateTimeGMT]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="EndDateTimeGMT"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[EndDateTimeGMT]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[EndDateTimeGMT]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[StateDuration]"
+                          cachedDataType="i4"
+                          cachedName="StateDuration"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StateDuration]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[StateDuration]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[SeqNo]"
+                          cachedDataType="i2"
+                          cachedName="SeqNo"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[SeqNo]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SeqNo]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[I3TimeStampGMT]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="I3TimeStampGMT"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[I3TimeStampGMT]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[I3TimeStampGMT]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[SiteId]"
+                          cachedDataType="i2"
+                          cachedName="SiteId"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[SiteId]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SiteId]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[SubSiteId]"
+                          cachedDataType="i2"
+                          cachedName="SubSiteId"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[SubSiteId]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output].Columns[SubSiteId]" />
+                        <inputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].Columns[BatchId]"
+                          cachedDataType="i4"
+                          cachedName="BatchId"
+                          externalMetadataColumnId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                          dataType="wstr"
+                          length="50"
+                          name="UserId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusDateTime]"
+                          dataType="dbTimeStamp"
+                          name="StatusDateTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          name="StatusDateTimeGMT" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedStatus]"
+                          dataType="i2"
+                          name="ChangedStatus" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedStatusGroup]"
+                          dataType="i2"
+                          name="ChangedStatusGroup" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedLoggedIn]"
+                          dataType="i2"
+                          name="ChangedLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[ChangedAcdLoggedIn]"
+                          dataType="i2"
+                          name="ChangedAcdLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusKey]"
+                          dataType="wstr"
+                          length="50"
+                          name="StatusKey" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusGroup]"
+                          dataType="wstr"
+                          length="50"
+                          name="StatusGroup" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[LoggedIn]"
+                          dataType="i2"
+                          name="LoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[AcdLoggedIn]"
+                          dataType="i2"
+                          name="AcdLoggedIn" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusDnd]"
+                          dataType="i2"
+                          name="StatusDnd" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StatusAcw]"
+                          dataType="i2"
+                          name="StatusAcw" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[EndDateTime]"
+                          dataType="dbTimeStamp"
+                          name="EndDateTime" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[EndDateTimeGMT]"
+                          dataType="dbTimeStamp"
+                          name="EndDateTimeGMT" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[StateDuration]"
+                          dataType="i4"
+                          name="StateDuration" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[SeqNo]"
+                          dataType="i2"
+                          name="SeqNo" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[I3TimeStampGMT]"
+                          dataType="dbTimeStamp"
+                          name="I3TimeStampGMT" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[SiteId]"
+                          dataType="i2"
+                          name="SiteId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[SubSiteId]"
+                          dataType="i2"
+                          name="SubSiteId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          dataType="i4"
+                          name="BatchId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow.Paths[Derived Column Output]"
+                  endId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow.Paths[OLE DB Source Output]"
+                  endId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ AgentStatus 2 Staging Sq\ININ To Staging AgentStatus"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4AD0BCDE-5E96-4A83-AD85-78CBE574307C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ To Staging AgentStatus"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ININ2StagingDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ AgentStatus 2 Staging Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{AF2CFEBE-B325-4FA2-8499-8F1B140AABC1}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ININ2StagingDataFlowId] &gt; 0"
+          DTS:From="Package\ININ AgentStatus 2 Staging Sq\ININ To Staging AgentStatus"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ AgentStatus 2 Staging Sq.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{0F34FCCC-30B1-46FE-A20E-B821DCFA98AB}"
+          DTS:From="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\ININ AgentStatus 2 Staging Sq\End Flow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{20B9C446-077E-4C62-B7C8-74285970F417}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4F88CC4C-BF4A-437D-B6A0-B378F1CFF3BF}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ AgentStatus 2 Staging Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{722D8DFB-8A91-4A2C-B5DE-F8F6AC703868}"
+      DTS:From="Package\ININ AgentStatus 2 Staging Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\ININ AgentStatus 2 Staging Sq\End Flow"
+          TopLeft="28,277" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow"
+          TopLeft="27,157" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ To Staging AgentStatus"
+          TopLeft="22,20" />
+        <EdgeLayout
+          Id="Package\ININ AgentStatus 2 Staging Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="130.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,95"
+              Start="0,0"
+              End="14.5,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.5"
+                    Point2="0,47.5"
+                    Point3="4,47.5" />
+                  <mssgle:LineSegment
+                    End="10.5,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,47.5"
+                    Point2="14.5,47.5"
+                    Point3="14.5,51.5" />
+                  <mssgle:LineSegment
+                    End="14.5,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.75,52.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ AgentStatus 2 Staging Sq.PrecedenceConstraints[Constraint 2]"
+          TopLeft="145,199">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55,78"
+              Start="0,0"
+              End="-55,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="-4,39" />
+                  <mssgle:LineSegment
+                    End="-51,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51,39"
+                    Point2="-55,39"
+                    Point3="-55,43" />
+                  <mssgle:LineSegment
+                    End="-55,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ AgentStatus 2 Staging Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog"
+          TopLeft="352,139" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\Derived Column"
+          TopLeft="593,236" />
+        <EdgeLayout
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow.Paths[OLE DB Source Output]"
+          TopLeft="444.5,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="226.5,55"
+              Start="0,0"
+              End="226.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="222.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="222.5,27.5"
+                    Point2="226.5,27.5"
+                    Point3="226.5,31.5" />
+                  <mssgle:LineSegment
+                    End="226.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog"
+          TopLeft="693,380" />
+        <EdgeLayout
+          Id="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow.Paths[Derived Column Output]"
+          TopLeft="671,278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,102"
+              Start="0,0"
+              End="110.5,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47"
+                    Point2="0,51"
+                    Point3="4,51" />
+                  <mssgle:LineSegment
+                    End="106.5,51" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,51"
+                    Point2="110.5,51"
+                    Point3="110.5,55" />
+                  <mssgle:LineSegment
+                    End="110.5,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\ININ AgentActivityLog">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ AgentStatus 2 Staging Sq\ININ AgentStatus 2 Staging Flow\stg AgentActivityLog">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

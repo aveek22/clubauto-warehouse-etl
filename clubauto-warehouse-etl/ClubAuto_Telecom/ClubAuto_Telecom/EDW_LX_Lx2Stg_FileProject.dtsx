@@ -1,0 +1,2162 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2014 11:09:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{E3766030-49D7-4308-84EB-1836355A6106}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_LX_Lx2Stg_FileProject"
+  DTS:PackageType="5"
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{825EA408-8E12-4D7C-92BD-9FC71E87E62D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lxProjectFileSource]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CA4C67BA-7FFA-47AD-80EE-DB60CE05E8FB}"
+      DTS:ObjectName="lxProjectFileSource">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::LXFileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\Caant\fs\CLAUTO_DATA\EDW LX\ClubAutoAgentStats_2014-09-11.CSV">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;INTERVALSTART&quot;"
+              DTS:DTSID="{E090311F-767F-42AA-A1BA-4832AFA66985}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;PROJECT_ID&quot;"
+              DTS:DTSID="{2D2434F3-0859-4586-AEEE-31AD5B7F1D46}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;PROJECT_NAME&quot;"
+              DTS:DTSID="{A56247DF-6384-4E5E-BC7A-DBEFA76F263A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;CALLS_OFFERED&quot;"
+              DTS:DTSID="{9D0A97FF-9AC8-4A07-8E2B-303BF0198FDF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;CALLS_HANDLED&quot;"
+              DTS:DTSID="{5F108E60-2E81-4771-985D-BE6DFEFFDBCB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;ANS_IN_SL1&quot;"
+              DTS:DTSID="{8F8DB5E7-3C07-49B9-9744-897FE268DF0D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;OUTBOUND_CALLS&quot;"
+              DTS:DTSID="{929FABA3-FD8B-4DF9-B9BE-2FDE3104A583}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;ABD&quot;"
+              DTS:DTSID="{02DE32EE-E565-4AB1-B526-4211EFA46234}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;ABDT10&quot;"
+              DTS:DTSID="{E2529F9E-47CE-44FD-9094-CADB235E9B1F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;ABDT20&quot;"
+              DTS:DTSID="{11C74FD2-D1B2-4721-92A0-A96D70546704}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;ABD_TIME&quot;"
+              DTS:DTSID="{077AD1FC-9AB5-499F-9D57-B9F4BFB7B4FE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;TALK_TIME&quot;"
+              DTS:DTSID="{3F8C2A29-B1A9-4A2C-BF78-1E1235BD58F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;HOLD_TIME&quot;"
+              DTS:DTSID="{B8131F4B-6C4F-4AC1-8555-EAC1DD106907}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;TOT_ANSWER_TIME&quot;"
+              DTS:DTSID="{78CFB7D5-37ED-40A6-92E1-C53CF52E2411}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;TOT_LC_TIME&quot;"
+              DTS:DTSID="{D20EF8AA-9661-455B-9C42-6E673EDC8572}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;HOLD_NUMBER&quot;"
+              DTS:DTSID="{6520A673-A134-436A-95B1-DFBFFF9C037F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;HOLD_OCC&quot;"
+              DTS:DTSID="{56C86BCC-E035-461E-9125-D1A40C12E27D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{C14E2CD9-8B1B-4194-A6F6-15597CAF2BC3}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E09DBA70-719F-464A-8C81-5878C8255FDF}"
+      DTS:ObjectName="LXFolderName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">\\Caant\fs\CLAUTO_DATA\EDW LX</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{003C8DBE-DB17-4D68-9717-9F5A916ADD35}"
+      DTS:ObjectName="ProcessedFolder">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">\\Caant\fs\CLAUTO_DATA\EDW LX\Processed</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{90BE0CC6-2E0F-4F15-8F48-AA229EF39CF4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{75489D4C-417E-4588-B50B-0A54C3576CB3}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ProcessedFolder] +  @[User::filePrefix] +    @[User::pureLXFileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DetsPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\Caant\fs\CLAUTO_DATA\EDW LX\Processed\prcd0_0ClubAutoAgentStats_2014-09-11.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4249C36A-6928-4C56-852F-BB261272B07C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;\\prcd&quot;+ &#xA;REPLACE(&#xA; REPLACE( &#xA; REPLACE( &#xA;  (DT_WSTR, 100) @[$Package::BatchId]  +&quot;_&quot;+  (DT_WSTR, 100) @[User::PackageExecId] &#xA;, &quot;/&quot;, &quot;&quot; ) &#xA;,&quot;:&quot;, &quot;&quot; ) &#xA;,&quot; &quot;,&quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filePrefix">
+      <DTS:VariableValue
+        DTS:DataType="8">\prcd0_0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{43A2EA0F-FED4-4D55-8AE3-C5F7C83500ED}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="lxFileId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D99EA97E-D62D-409B-918C-953BD1D2BA60}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LXFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">\\Caant\fs\CLAUTO_DATA\EDW LX\ClubAutoAgentStats_2014-09-11.CSV</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7E04EA68-474A-422A-9FD0-B79812D6CA03}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C0502C77-C43E-4F1C-84C0-226F66C3029C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="Right( @[User::LXFileName]  ,   FINDSTRING( Reverse( @[User::LXFileName]  ), &quot;\\&quot;,1 ) - 1)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pureLXFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">ClubAutoAgentStats_2014-09-11.CSV</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End DataFlow"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3514c2fc-27f8-4037-a060-e4f47333f088}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End DataFlow"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::DataFlowId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{988531bc-051e-498c-9fff-4dbcac9ae083}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\For Each LX Project File"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{FAD0C88A-5D3C-4929-9950-02744E704153}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="For Each LX Project File">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{E2676474-5CE5-4A3A-BF20-EE157AB8F9BE}"
+        DTS:ObjectName="{E2676474-5CE5-4A3A-BF20-EE157AB8F9BE}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\Caant\fs\CLAUTO_DATA\EDW LX" />
+            <FEFEProperty
+              FileSpec="ClubAutoProjectStats_20*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX Project File\Delete"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{DE6F62FC-1897-49C7-B95A-395CC63A1ABF}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="DeleteFile"
+              TaskSourcePath="User::LXFileName"
+              TaskIsSourceVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX Project File\Failure"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{044E43E4-A420-4F86-A355-C8C8E6E437B4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Failure"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Exec MCB.usp_End_ETLDataFile_Falure ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lxFileId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX Project File\lx Project File 2 Staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{76251D64-9186-4516-B73C-FD3CB4CF46CF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="lx Project File 2 Staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[FileSource]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[FileSource]"
+                          name="FileSource"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::pureLXFileName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::pureLXFileName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          name="BatchId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::BatchId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::BatchId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="LXProject"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[LX].[ProjectStats]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Connections[OleDbConnection]"
+                      connectionManagerID="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;INTERVALSTART&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;INTERVALSTART&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[INTERVALSTART]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;INTERVALSTART&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;PROJECT_ID&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;PROJECT_ID&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[PROJECT_ID]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;PROJECT_ID&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;PROJECT_NAME&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;PROJECT_NAME&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[PROJECT_NAME]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;PROJECT_NAME&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;CALLS_OFFERED&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;CALLS_OFFERED&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[CALLS_OFFERED]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;CALLS_OFFERED&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;CALLS_HANDLED&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;CALLS_HANDLED&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[CALLS_HANDLED]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;CALLS_HANDLED&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;ANS_IN_SL1&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;ANS_IN_SL1&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ANS_IN_SL1]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ANS_IN_SL1&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;OUTBOUND_CALLS&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;OUTBOUND_CALLS&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[OUTBOUND_CALLS]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;OUTBOUND_CALLS&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;ABD&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;ABD&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABD]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABD&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;ABDT10&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;ABDT10&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABDT10]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABDT10&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;ABDT20&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;ABDT20&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABDT20]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABDT20&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;ABD_TIME&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;ABD_TIME&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABD_TIME]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABD_TIME&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;TALK_TIME&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;TALK_TIME&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[TALK_TIME]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TALK_TIME&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;HOLD_TIME&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;HOLD_TIME&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[HOLD_TIME]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_TIME&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;TOT_ANSWER_TIME&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;TOT_ANSWER_TIME&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[TOT_ANSWER_TIME]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TOT_ANSWER_TIME&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;TOT_LC_TIME&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;TOT_LC_TIME&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[TOT_LC_TIME]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TOT_LC_TIME&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;HOLD_NUMBER&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;HOLD_NUMBER&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[HOLD_NUMBER]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_NUMBER&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[&quot;HOLD_OCC&quot;]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="&quot;HOLD_OCC&quot;"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[HOLD_OCC]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_OCC&quot;]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[FileSource]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="FileSource"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[FileSource]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[FileSource]" />
+                        <inputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].Columns[BatchId]"
+                          cachedDataType="i4"
+                          cachedName="BatchId"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output].Columns[BatchId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[INTERVALSTART]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="INTERVALSTART" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[PROJECT_ID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PROJECT_ID" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[PROJECT_NAME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="PROJECT_NAME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[CALLS_OFFERED]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CALLS_OFFERED" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[CALLS_HANDLED]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CALLS_HANDLED" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ANS_IN_SL1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ANS_IN_SL1" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[OUTBOUND_CALLS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="OUTBOUND_CALLS" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABD]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ABD" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABDT10]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ABDT10" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABDT20]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ABDT20" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[ABD_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ABD_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[TALK_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TALK_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[HOLD_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HOLD_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[TOT_ANSWER_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TOT_ANSWER_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[TOT_LC_TIME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TOT_LC_TIME" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[HOLD_NUMBER]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HOLD_NUMBER" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[HOLD_OCC]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HOLD_OCC" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[FileSource]"
+                          dataType="wstr"
+                          length="255"
+                          name="FileSource" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          dataType="i4"
+                          name="BatchId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="lxProject"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[lxProjectFileSource]"
+                      connectionManagerRefId="Package.ConnectionManagers[lxProjectFileSource]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;INTERVALSTART&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;INTERVALSTART&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;INTERVALSTART&quot;]"
+                          name="&quot;INTERVALSTART&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;PROJECT_ID&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;PROJECT_ID&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;PROJECT_ID&quot;]"
+                          name="&quot;PROJECT_ID&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;PROJECT_NAME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;PROJECT_NAME&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;PROJECT_NAME&quot;]"
+                          name="&quot;PROJECT_NAME&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;CALLS_OFFERED&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;CALLS_OFFERED&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;CALLS_OFFERED&quot;]"
+                          name="&quot;CALLS_OFFERED&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;CALLS_HANDLED&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;CALLS_HANDLED&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;CALLS_HANDLED&quot;]"
+                          name="&quot;CALLS_HANDLED&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ANS_IN_SL1&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ANS_IN_SL1&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ANS_IN_SL1&quot;]"
+                          name="&quot;ANS_IN_SL1&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;OUTBOUND_CALLS&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;OUTBOUND_CALLS&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;OUTBOUND_CALLS&quot;]"
+                          name="&quot;OUTBOUND_CALLS&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABD&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABD&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABD&quot;]"
+                          name="&quot;ABD&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABDT10&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABDT10&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABDT10&quot;]"
+                          name="&quot;ABDT10&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABDT20&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABDT20&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABDT20&quot;]"
+                          name="&quot;ABDT20&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABD_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABD_TIME&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;ABD_TIME&quot;]"
+                          name="&quot;ABD_TIME&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TALK_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;TALK_TIME&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TALK_TIME&quot;]"
+                          name="&quot;TALK_TIME&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;HOLD_TIME&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_TIME&quot;]"
+                          name="&quot;HOLD_TIME&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TOT_ANSWER_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;TOT_ANSWER_TIME&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TOT_ANSWER_TIME&quot;]"
+                          name="&quot;TOT_ANSWER_TIME&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TOT_LC_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;TOT_LC_TIME&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;TOT_LC_TIME&quot;]"
+                          name="&quot;TOT_LC_TIME&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_NUMBER&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;HOLD_NUMBER&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_NUMBER&quot;]"
+                          name="&quot;HOLD_NUMBER&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_OCC&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;HOLD_OCC&quot;]"
+                          length="50"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].Columns[&quot;HOLD_OCC&quot;]"
+                          name="&quot;HOLD_OCC&quot;"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;INTERVALSTART&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;INTERVALSTART&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;PROJECT_ID&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;PROJECT_ID&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;PROJECT_NAME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;PROJECT_NAME&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;CALLS_OFFERED&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;CALLS_OFFERED&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;CALLS_HANDLED&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;CALLS_HANDLED&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ANS_IN_SL1&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;ANS_IN_SL1&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;OUTBOUND_CALLS&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;OUTBOUND_CALLS&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABD&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;ABD&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABDT10&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;ABDT10&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABDT20&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;ABDT20&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;ABD_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;ABD_TIME&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;TALK_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;TALK_TIME&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;HOLD_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;HOLD_TIME&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;TOT_ANSWER_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;TOT_ANSWER_TIME&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;TOT_LC_TIME&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;TOT_LC_TIME&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;HOLD_NUMBER&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;HOLD_NUMBER&quot;" />
+                        <externalMetadataColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output].ExternalColumns[&quot;HOLD_OCC&quot;]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="&quot;HOLD_OCC&quot;" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Each LX Project File\lx Project File 2 Staging.Paths[Derived Column Output]"
+                  endId="Package\For Each LX Project File\lx Project File 2 Staging\LXProject.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\For Each LX Project File\lx Project File 2 Staging.Paths[Flat File Source Output]"
+                  endId="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\For Each LX Project File\lx Project File 2 Staging\lxProject.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX Project File\LX Project File Processing"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{87825F0B-886C-40AB-8FD0-2E1B9BFA7D99}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LX Project File Processing"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource=" Exec MCB.usp_FileId_Get ?, ?, ?, ? Out " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::pureLXFileName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="$Package::BatchId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::lxFileId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX Project File\RenameNMove"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{F5E577D6-AC0B-4FB3-A304-144EEEFCAAD4}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="RenameNMove"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskSourcePath="User::LXFileName"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::DetsPath"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Each LX Project File\Success"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{87855553-54A9-40F0-B4CA-96A52382DCD5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Success"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Exec MCB.usp_End_ETLDataFile_Success ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::lxFileId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX Project File.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{16B243FB-904D-44ED-9750-C8D5999A5BAF}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::lxFileId] &gt; 0"
+          DTS:From="Package\For Each LX Project File\LX Project File Processing"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\For Each LX Project File\lx Project File 2 Staging" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX Project File.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{61507B43-10B5-426A-8B7C-03BB4200D178}"
+          DTS:From="Package\For Each LX Project File\lx Project File 2 Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\For Each LX Project File\RenameNMove" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX Project File.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4B3E9514-4362-44F1-AB76-FB3D32638EE2}"
+          DTS:From="Package\For Each LX Project File\RenameNMove"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\For Each LX Project File\Delete" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX Project File.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{2A15D5A9-AAF4-42E4-946E-D1807D175CBD}"
+          DTS:From="Package\For Each LX Project File\Delete"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\For Each LX Project File\Success" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Each LX Project File.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{EE1CFC06-2B8E-4251-AE82-8ACD768B6DE9}"
+          DTS:From="Package\For Each LX Project File\lx Project File 2 Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\For Each LX Project File\Failure"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{491C8DA4-6521-4026-A8E2-A362F2FDC988}"
+          DTS:ObjectName="{491C8DA4-6521-4026-A8E2-A362F2FDC988}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::LXFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LX ProjectStats File 2 EDW"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{32687889-af0e-482f-a245-9de8a8a1b589}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LX ProjectStats File 2 EDW"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::TaskName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::DataFlowId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1c077ffc-a0a6-4f23-b439-5867bf810168}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3BE2E112-1978-4359-A568-FCE8D457599D}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\LX ProjectStats File 2 EDW" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A1A1A983-4AFD-464C-8AAE-D84DF7AB9901}"
+      DTS:From="Package\For Each LX Project File"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End DataFlow" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{EB710FA1-E5A0-4E8E-B54C-D98F5C01B082}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DataFlowId] &gt; 0"
+      DTS:From="Package\LX ProjectStats File 2 EDW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\For Each LX Project File" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{24BDA380-37F1-4407-B2E4-07AE34BFBAE2}"
+      DTS:From="Package\End DataFlow"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\End DataFlow"
+          TopLeft="768,363" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="759,543" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\For Each LX Project File\Delete"
+          TopLeft="27,256" />
+        <NodeLayout
+          Size="112,42"
+          Id="Package\For Each LX Project File\Failure"
+          TopLeft="348,116" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\For Each LX Project File\lx Project File 2 Staging"
+          TopLeft="42,105" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\For Each LX Project File\LX Project File Processing"
+          TopLeft="29,15" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\For Each LX Project File\RenameNMove"
+          TopLeft="43,183" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\For Each LX Project File\Success"
+          TopLeft="232,260" />
+        <EdgeLayout
+          Id="Package\For Each LX Project File.PrecedenceConstraints[Constraint]"
+          TopLeft="129.5,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,48"
+              Start="0,0"
+              End="8.5,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="4.5,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,24"
+                    Point2="8.5,24"
+                    Point3="8.5,28" />
+                  <mssgle:LineSegment
+                    End="8.5,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-3.75,29,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX Project File.PrecedenceConstraints[Constraint 1]"
+          TopLeft="138,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.5,36"
+              Start="0,0"
+              End="-19.5,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-15.5,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5,18"
+                    Point2="-19.5,18"
+                    Point3="-19.5,22" />
+                  <mssgle:LineSegment
+                    End="-19.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX Project File.PrecedenceConstraints[Constraint 2]"
+          TopLeft="118.5,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36,31"
+              Start="0,0"
+              End="-36,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-32,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32,15.5"
+                    Point2="-36,15.5"
+                    Point3="-36,19.5" />
+                  <mssgle:LineSegment
+                    End="-36,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX Project File.PrecedenceConstraints[Constraint 3]"
+          TopLeft="138,279">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94,0"
+              Start="0,0"
+              End="86.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="86.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX Project File.PrecedenceConstraints[Constraint 4]"
+          TopLeft="234,126">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114,11"
+              Start="0,0"
+              End="106.5,11">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,0"
+                    Point2="57,0"
+                    Point3="57,4" />
+                  <mssgle:LineSegment
+                    End="57,7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57,7"
+                    Point2="57,11"
+                    Point3="61,11" />
+                  <mssgle:LineSegment
+                    End="106.5,11" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="41.75865234375,-15.7490234375,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="564,366"
+          Size="564,409"
+          Id="Package\For Each LX Project File"
+          TopLeft="73,186" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\LX ProjectStats File 2 EDW"
+          TopLeft="491,91" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="241,60" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="387,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104,31"
+              Start="0,0"
+              End="96.5,31">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48,0"
+                    Point2="52,0"
+                    Point3="52,4" />
+                  <mssgle:LineSegment
+                    End="52,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52,27"
+                    Point2="52,31"
+                    Point3="56,31" />
+                  <mssgle:LineSegment
+                    End="96.5,31" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="44,-22,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="637,387.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131,0"
+              Start="0,0"
+              End="123.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="123.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="594.5,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-239.5,53"
+              Start="0,0"
+              End="-239.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="-4,26.5" />
+                  <mssgle:LineSegment
+                    End="-235.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-235.5,26.5"
+                    Point2="-239.5,26.5"
+                    Point3="-239.5,30.5" />
+                  <mssgle:LineSegment
+                    End="-239.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-127.75,31.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="841,405">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.5,138"
+              Start="0,0"
+              End="-11.5,130.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65"
+                    Point2="0,69"
+                    Point3="-4,69" />
+                  <mssgle:LineSegment
+                    End="-7.5,69" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.5,69"
+                    Point2="-11.5,69"
+                    Point3="-11.5,73" />
+                  <mssgle:LineSegment
+                    End="-11.5,130.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\For Each LX Project File\lx Project File 2 Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="121,42"
+          Id="Package\For Each LX Project File\lx Project File 2 Staging\lxProject"
+          TopLeft="246,176" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\For Each LX Project File\lx Project File 2 Staging\Derived Column"
+          TopLeft="419,273" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\For Each LX Project File\lx Project File 2 Staging\LXProject"
+          TopLeft="262,406" />
+        <EdgeLayout
+          Id="Package\For Each LX Project File\lx Project File 2 Staging.Paths[Derived Column Output]"
+          TopLeft="497,315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-172.5,91"
+              Start="0,0"
+              End="-172.5,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="-4,45.5" />
+                  <mssgle:LineSegment
+                    End="-168.5,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-168.5,45.5"
+                    Point2="-172.5,45.5"
+                    Point3="-172.5,49.5" />
+                  <mssgle:LineSegment
+                    End="-172.5,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Each LX Project File\lx Project File 2 Staging.Paths[Flat File Source Output]"
+          TopLeft="306.5,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="190.5,55"
+              Start="0,0"
+              End="190.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="186.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="186.5,27.5"
+                    Point2="190.5,27.5"
+                    Point3="190.5,31.5" />
+                  <mssgle:LineSegment
+                    End="190.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Each LX Project File\lx Project File 2 Staging\LXProject">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

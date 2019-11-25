@@ -1,0 +1,1317 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{2F4CC8E8-FEA6-4E5F-896D-8F1FBD3BC85B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_LX_Stg2EDW_WorkgroupInterval"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{650F9919-6568-4B69-8B03-3CE6649DBD7E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{54A68EC5-9D28-4F70-92A4-49A5759B89BE}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2ADB6CF5-3AC6-4808-B2D6-513CFDB9BFAE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE2100C9-D70D-40C9-9444-9CC8D26F3388}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Staging2EDWDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3B289C80-3983-4F0E-BA00-17604A8F6066}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LX Stg 2 EDW WorkgroupInterval Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{21FFFC7D-E329-4813-A81D-1C52304C9C76}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LX Stg 2 EDW WorkgroupInterval Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\LX Stg 2 EDW WorkgroupInterval Sq\EndFlow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FC463FD8-9367-4CCD-8607-EA4F82A3D883}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EndFlow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX Stg To EDW WorkgroupInterval Data Flow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{77106FA9-C2F1-4804-8B6E-679EE23E0638}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LX Stg To EDW WorkgroupInterval Data Flow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::Staging2EDWDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX_Populate FactWorkGroupInterval"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{39A596FE-EC6A-4AAD-9812-297AAF40CB75}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LX_Populate FactWorkGroupInterval"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Exec [dbo].[usp_ETL_LX_FactWorkgroupInterval_Populate]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LX Stg 2 EDW WorkgroupInterval Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BEB7C520-9364-4867-A029-E242D564A07C}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::Staging2EDWDataFlowId] &gt; 0"
+          DTS:From="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX Stg To EDW WorkgroupInterval Data Flow"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX_Populate FactWorkGroupInterval" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\LX Stg 2 EDW WorkgroupInterval Sq.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{4BD9D8A9-766F-4DF3-B267-49941C4ABE9C}"
+          DTS:From="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX_Populate FactWorkGroupInterval"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\LX Stg 2 EDW WorkgroupInterval Sq\EndFlow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LX WorkgroupInterval Fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{DE386F45-32B9-4DE8-BC54-0DA73A4A05DB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LX WorkgroupInterval Fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FactWorkgroupInterval"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactWorkgroupInterval]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Connections[OleDbConnection]"
+                  connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[IntervalDateKey]"
+                      cachedDataType="i4"
+                      cachedName="IntervalDateKey"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalDatekey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IntervalDateKey]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[WorkgroupKey]"
+                      cachedDataType="i4"
+                      cachedName="WorkgroupKey"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupKey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[SkillSetKey]"
+                      cachedDataType="i4"
+                      cachedName="SkillSetKey"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SkillSetKey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SkillSetKey]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[Intervalkey]"
+                      cachedDataType="i4"
+                      cachedName="Intervalkey"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[Intervalkey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[Intervalkey]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[IntervalStartTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="IntervalStartTime"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalStartTime]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IntervalStartTime]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[Duration]"
+                      cachedDataType="i4"
+                      cachedName="Duration"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[Duration]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[Duration]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[IncomingCalls]"
+                      cachedDataType="i4"
+                      cachedName="IncomingCalls"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[IncomingCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IncomingCalls]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[OutgoingCalls]"
+                      cachedDataType="i4"
+                      cachedName="OutgoingCalls"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[OutgoingCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[OutgoingCalls]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[AnsweredCalls]"
+                      cachedDataType="i4"
+                      cachedName="AnsweredCalls"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredCalls]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[AbondonedCalls]"
+                      cachedDataType="i4"
+                      cachedName="AbondonedCalls"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AbondonedCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbondonedCalls]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[AbandonAcdSvcLvl1]"
+                      cachedDataType="i4"
+                      cachedName="AbandonAcdSvcLvl1"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AbandonAcdSvcLvl1]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbandonAcdSvcLvl1]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[AbandonAcdSvcLvl2]"
+                      cachedDataType="i4"
+                      cachedName="AbandonAcdSvcLvl2"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AbandonAcdSvcLvl2]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbandonAcdSvcLvl2]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[AnsweredAcdSvcLvl1]"
+                      cachedDataType="i4"
+                      cachedName="AnsweredAcdSvcLvl1"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredAcdSvcLvl1]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdSvcLvl1]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[AnsweredAcdSvcLvl2]"
+                      cachedDataType="i4"
+                      cachedName="AnsweredAcdSvcLvl2"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredAcdSvcLvl2]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdSvcLvl2]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[PutOnHold]"
+                      cachedDataType="i4"
+                      cachedName="PutOnHold"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[PutOnHold]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[PutOnHold]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[SecondsOnHold]"
+                      cachedDataType="i4"
+                      cachedName="SecondsOnHold"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsOnHold]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsOnHold]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[SecondsToBeAnsweredByAgent]"
+                      cachedDataType="i4"
+                      cachedName="SecondsToBeAnsweredByAgent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsToBeAnsweredByAgent]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsToBeAnsweredByAgent]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[SecondsHandling]"
+                      cachedDataType="i4"
+                      cachedName="SecondsHandling"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsHandling]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsHandling]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[SecondsAfterCall]"
+                      cachedDataType="i4"
+                      cachedName="SecondsAfterCall"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsAfterCall]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsAfterCall]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[SecondsInWait]"
+                      cachedDataType="i4"
+                      cachedName="SecondsInWait"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInWait]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsInWait]" />
+                    <inputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].Columns[TimeToAbandoned]"
+                      cachedDataType="i4"
+                      cachedName="TimeToAbandoned"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[TimeToAbandoned]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[TimeToAbandoned]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupIntervalStatID]"
+                      dataType="i4"
+                      name="WorkgroupIntervalStatID" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SummaryId]"
+                      dataType="i4"
+                      name="SummaryId" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalDatekey]"
+                      dataType="i4"
+                      name="IntervalDatekey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[WorkgroupKey]"
+                      dataType="i4"
+                      name="WorkgroupKey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SkillSetKey]"
+                      dataType="i4"
+                      name="SkillSetKey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[Intervalkey]"
+                      dataType="i4"
+                      name="Intervalkey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[IntervalStartTime]"
+                      dataType="dbTimeStamp"
+                      name="IntervalStartTime" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[Duration]"
+                      dataType="i2"
+                      name="Duration" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[IncomingCalls]"
+                      dataType="i4"
+                      name="IncomingCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[OutgoingCalls]"
+                      dataType="i4"
+                      name="OutgoingCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredCalls]"
+                      dataType="i4"
+                      name="AnsweredCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AbondonedCalls]"
+                      dataType="i4"
+                      name="AbondonedCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AbandonAcdSvcLvl1]"
+                      dataType="i4"
+                      name="AbandonAcdSvcLvl1" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AbandonAcdSvcLvl2]"
+                      dataType="i4"
+                      name="AbandonAcdSvcLvl2" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredAcdSvcLvl1]"
+                      dataType="i4"
+                      name="AnsweredAcdSvcLvl1" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[AnsweredAcdSvcLvl2]"
+                      dataType="i4"
+                      name="AnsweredAcdSvcLvl2" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[PutOnHold]"
+                      dataType="i4"
+                      name="PutOnHold" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsOnHold]"
+                      dataType="i4"
+                      name="SecondsOnHold" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsToBeAnsweredByAgent]"
+                      dataType="i4"
+                      name="SecondsToBeAnsweredByAgent" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsHandling]"
+                      dataType="i4"
+                      name="SecondsHandling" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsAfterCall]"
+                      dataType="i4"
+                      name="SecondsAfterCall" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[SecondsInWait]"
+                      dataType="i4"
+                      name="SecondsInWait" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input].ExternalColumns[TimeToAbandoned]"
+                      dataType="i4"
+                      name="TimeToAbandoned" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="LXWorgroupInterval View"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vw_ETL_LX_WorkgroupInterval_Fact_Populate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Connections[OleDbConnection]"
+                  connectionManagerID="{370C1507-6A3D-4D9F-B7EA-FD63044E586D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[EDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IntervalDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalDateKey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IntervalDateKey]"
+                      name="IntervalDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[WorkgroupKey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[WorkgroupKey]"
+                      name="WorkgroupKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SkillSetKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SkillSetKey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SkillSetKey]"
+                      name="SkillSetKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[Intervalkey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[Intervalkey]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[Intervalkey]"
+                      name="Intervalkey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IntervalStartTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalStartTime]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IntervalStartTime]"
+                      name="IntervalStartTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[Duration]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[Duration]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[Duration]"
+                      name="Duration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IncomingCalls]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[IncomingCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[IncomingCalls]"
+                      name="IncomingCalls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[OutgoingCalls]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[OutgoingCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[OutgoingCalls]"
+                      name="OutgoingCalls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredCalls]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredCalls]"
+                      name="AnsweredCalls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbondonedCalls]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AbondonedCalls]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbondonedCalls]"
+                      name="AbondonedCalls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbandonAcdSvcLvl1]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AbandonAcdSvcLvl1]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbandonAcdSvcLvl1]"
+                      name="AbandonAcdSvcLvl1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbandonAcdSvcLvl2]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AbandonAcdSvcLvl2]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AbandonAcdSvcLvl2]"
+                      name="AbandonAcdSvcLvl2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdSvcLvl1]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredAcdSvcLvl1]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdSvcLvl1]"
+                      name="AnsweredAcdSvcLvl1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdSvcLvl2]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredAcdSvcLvl2]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[AnsweredAcdSvcLvl2]"
+                      name="AnsweredAcdSvcLvl2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[PutOnHold]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[PutOnHold]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[PutOnHold]"
+                      name="PutOnHold"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsOnHold]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsOnHold]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsOnHold]"
+                      name="SecondsOnHold"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsToBeAnsweredByAgent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsToBeAnsweredByAgent]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsToBeAnsweredByAgent]"
+                      name="SecondsToBeAnsweredByAgent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsHandling]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsHandling]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsHandling]"
+                      name="SecondsHandling"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsAfterCall]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsAfterCall]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsAfterCall]"
+                      name="SecondsAfterCall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsInWait]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInWait]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[SecondsInWait]"
+                      name="SecondsInWait"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[TimeToAbandoned]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[TimeToAbandoned]"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].Columns[TimeToAbandoned]"
+                      name="TimeToAbandoned"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalDateKey]"
+                      dataType="i4"
+                      name="IntervalDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[WorkgroupKey]"
+                      dataType="i4"
+                      name="WorkgroupKey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SkillSetKey]"
+                      dataType="i4"
+                      name="SkillSetKey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[Intervalkey]"
+                      dataType="i4"
+                      name="Intervalkey" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[IntervalStartTime]"
+                      dataType="dbTimeStamp"
+                      name="IntervalStartTime" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[Duration]"
+                      dataType="i4"
+                      name="Duration" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[IncomingCalls]"
+                      dataType="i4"
+                      name="IncomingCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[OutgoingCalls]"
+                      dataType="i4"
+                      name="OutgoingCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredCalls]"
+                      dataType="i4"
+                      name="AnsweredCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AbondonedCalls]"
+                      dataType="i4"
+                      name="AbondonedCalls" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AbandonAcdSvcLvl1]"
+                      dataType="i4"
+                      name="AbandonAcdSvcLvl1" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AbandonAcdSvcLvl2]"
+                      dataType="i4"
+                      name="AbandonAcdSvcLvl2" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredAcdSvcLvl1]"
+                      dataType="i4"
+                      name="AnsweredAcdSvcLvl1" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[AnsweredAcdSvcLvl2]"
+                      dataType="i4"
+                      name="AnsweredAcdSvcLvl2" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[PutOnHold]"
+                      dataType="i4"
+                      name="PutOnHold" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsOnHold]"
+                      dataType="i4"
+                      name="SecondsOnHold" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsToBeAnsweredByAgent]"
+                      dataType="i4"
+                      name="SecondsToBeAnsweredByAgent" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsHandling]"
+                      dataType="i4"
+                      name="SecondsHandling" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsAfterCall]"
+                      dataType="i4"
+                      name="SecondsAfterCall" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[SecondsInWait]"
+                      dataType="i4"
+                      name="SecondsInWait" />
+                    <externalMetadataColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output].ExternalColumns[TimeToAbandoned]"
+                      dataType="i4"
+                      name="TimeToAbandoned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalDateKey]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalDateKey]"
+                      name="IntervalDateKey" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[WorkgroupKey]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[WorkgroupKey]"
+                      name="WorkgroupKey" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SkillSetKey]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SkillSetKey]"
+                      name="SkillSetKey" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[Intervalkey]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[Intervalkey]"
+                      name="Intervalkey" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalStartTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[IntervalStartTime]"
+                      name="IntervalStartTime" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[Duration]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[Duration]"
+                      name="Duration" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[IncomingCalls]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[IncomingCalls]"
+                      name="IncomingCalls" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[OutgoingCalls]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[OutgoingCalls]"
+                      name="OutgoingCalls" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredCalls]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredCalls]"
+                      name="AnsweredCalls" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AbondonedCalls]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AbondonedCalls]"
+                      name="AbondonedCalls" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AbandonAcdSvcLvl1]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AbandonAcdSvcLvl1]"
+                      name="AbandonAcdSvcLvl1" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AbandonAcdSvcLvl2]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AbandonAcdSvcLvl2]"
+                      name="AbandonAcdSvcLvl2" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredAcdSvcLvl1]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredAcdSvcLvl1]"
+                      name="AnsweredAcdSvcLvl1" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredAcdSvcLvl2]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[AnsweredAcdSvcLvl2]"
+                      name="AnsweredAcdSvcLvl2" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[PutOnHold]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[PutOnHold]"
+                      name="PutOnHold" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsOnHold]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsOnHold]"
+                      name="SecondsOnHold" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsToBeAnsweredByAgent]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsToBeAnsweredByAgent]"
+                      name="SecondsToBeAnsweredByAgent" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsHandling]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsHandling]"
+                      name="SecondsHandling" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsAfterCall]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsAfterCall]"
+                      name="SecondsAfterCall" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInWait]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[SecondsInWait]"
+                      name="SecondsInWait" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[TimeToAbandoned]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[TimeToAbandoned]"
+                      name="TimeToAbandoned" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\LX WorkgroupInterval Fact.Paths[OLE DB Source Output]"
+              endId="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CB61FC6F-FDBA-4012-8D9B-A74FBFAC2817}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{95A2884E-253D-4F27-A9E8-CB929BD6A725}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\LX Stg 2 EDW WorkgroupInterval Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D134474C-0C0D-4FF5-8609-1F3489F6D8BA}"
+      DTS:From="Package\LX Stg 2 EDW WorkgroupInterval Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\LX Stg 2 EDW WorkgroupInterval Sq\EndFlow"
+          TopLeft="51,258" />
+        <NodeLayout
+          Size="295,42"
+          Id="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX Stg To EDW WorkgroupInterval Data Flow"
+          TopLeft="22,20" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\LX Stg 2 EDW WorkgroupInterval Sq\LX_Populate FactWorkGroupInterval"
+          TopLeft="46,132" />
+        <EdgeLayout
+          Id="Package\LX Stg 2 EDW WorkgroupInterval Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="170.75,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,23.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LX Stg 2 EDW WorkgroupInterval Sq.PrecedenceConstraints[Constraint 1]"
+          TopLeft="172,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-60.5,84"
+              Start="0,0"
+              End="-60.5,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38"
+                    Point2="0,42"
+                    Point3="-4,42" />
+                  <mssgle:LineSegment
+                    End="-56.5,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-56.5,42"
+                    Point2="-60.5,42"
+                    Point3="-60.5,46" />
+                  <mssgle:LineSegment
+                    End="-60.5,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\LX Stg 2 EDW WorkgroupInterval Sq"
+          TopLeft="182,152" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.5,70"
+              Start="0,0"
+              End="111.5,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="107.5,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.5,35"
+                    Point2="111.5,35"
+                    Point3="111.5,39" />
+                  <mssgle:LineSegment
+                    End="111.5,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.75,40,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="529,359.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196,248.5"
+              Start="0,0"
+              End="188.5,248.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94,0"
+                    Point2="98,0"
+                    Point3="98,4" />
+                  <mssgle:LineSegment
+                    End="98,244.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98,244.5"
+                    Point2="98,248.5"
+                    Point3="102,248.5" />
+                  <mssgle:LineSegment
+                    End="188.5,248.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="207,42"
+          Id="Package\LX WorkgroupInterval Fact"
+          TopLeft="896,185" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\LX WorkgroupInterval Fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="201,42"
+          Id="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View"
+          TopLeft="552,116" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval"
+          TopLeft="703,294" />
+        <EdgeLayout
+          Id="Package\LX WorkgroupInterval Fact.Paths[OLE DB Source Output]"
+          TopLeft="652.5,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145,136"
+              Start="0,0"
+              End="145,128.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64"
+                    Point2="0,68"
+                    Point3="4,68" />
+                  <mssgle:LineSegment
+                    End="141,68" />
+                  <mssgle:CubicBezierSegment
+                    Point1="141,68"
+                    Point2="145,68"
+                    Point3="145,72" />
+                  <mssgle:LineSegment
+                    End="145,128.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\LX WorkgroupInterval Fact\FactWorkgroupInterval">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\LX WorkgroupInterval Fact\LXWorgroupInterval View">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

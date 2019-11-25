@@ -1,0 +1,1041 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2014 11:00:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-17849-L"
+  DTS:CreatorName="CAANT\htak"
+  DTS:DTSID="{A5872A5C-A0C2-41CB-B537-4F7CB572BC6D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3025.39"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EDW_ININ_ININ2Stg_Workgroup"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{AC7D8016-E574-4014-A016-CB47BF208381}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{90268503-B9E3-488A-B463-86CEB8D9ACB5}"
+      DTS:ObjectName="BatchId">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C42981C4-A0D2-44DD-8220-4159EDB1807A}"
+      DTS:ObjectName="ININQuery">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Select DimensionSet, cType, cDimension1, cDimension2, cDimension3, cDimension4 From StatDimensions Where cType = 'W'</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C8BAA70E-4C3A-4EA2-BA20-96228308E6EE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ININ2StagingDataFlowId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{03DFBE98-79F2-446B-89B4-3A66B7FEB33A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageExecId">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\End Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7423F2AB-EA1B-49E3-91A9-1BEEE365B973}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="End Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec [MCB].[usp_EndPackage_Success] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ININ Agent 2 Staging Sq"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{50F520BF-6976-4003-82BB-D4CD6B784EB4}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ININ Agent 2 Staging Sq">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ININ Agent 2 Staging Sq\End Data Flow"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A2109A3D-A11B-4D02-A96D-887DABDE8783}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="End Data Flow"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_EndDataFlow_Success ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::ININ2StagingDataFlowId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Agent 2 Staging Sq\ININ To Staging Workgroup"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7B3ACE01-74F0-43BD-8D69-DBD3B1A47429}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ To Staging Workgroup"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+              SQLTask:SqlStatementSource="Exec MCB.usp_StartDataFlow ?, ?, ? Output" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::PackageExecId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::TaskName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::ININ2StagingDataFlowId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{C5DC73AB-BFD8-4A11-89F3-751FC52845F9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ININ Wrokgroup 2 Staging Flow"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]"
+                          name="BatchId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[$Package::BatchId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[$Package::BatchId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="ININ StatDimensions"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select IndivTypeID, LastName, FirstName, Department, WebLogin, Active, ICUserID, OwnerID
+
+  From Individual</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">$Package::ININQuery</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Connections[OleDbConnection]"
+                      connectionManagerID="{55C16A85-6504-4D70-A1F6-4FE49F686A29}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ININ4Prod]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[DimensionSet]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[DimensionSet]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[DimensionSet]"
+                          name="DimensionSet"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cType]"
+                          length="1"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cType]"
+                          name="cType"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension1]"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension1]"
+                          name="cDimension1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension2]"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension2]"
+                          name="cDimension2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension3]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension3]"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension3]"
+                          name="cDimension3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension4]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension4]"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension4]"
+                          name="cDimension4"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[DimensionSet]"
+                          dataType="i4"
+                          name="DimensionSet" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cType" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension1]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension1" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension2]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension2" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension3]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension3" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].ExternalColumns[cDimension4]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension4" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[DimensionSet]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[DimensionSet]"
+                          name="DimensionSet" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cType]"
+                          name="cType" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension1]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension1]"
+                          name="cDimension1" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension2]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension2]"
+                          name="cDimension2" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension3]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension3]"
+                          name="cDimension3" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension4]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[cDimension4]"
+                          name="cDimension4" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Stg DimensionSet"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[ININ].[WorkgroupStatDimensions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Connections[OleDbConnection]"
+                      connectionManagerID="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[EDW_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[BatchId]"
+                          cachedDataType="i4"
+                          cachedName="BatchId"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Output].Columns[BatchId]" />
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[DimensionSet]"
+                          cachedDataType="i4"
+                          cachedName="DimensionSet"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[DimensionSet]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[DimensionSet]" />
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[cType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="cType"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cType]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cType]" />
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[cDimension1]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="cDimension1"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension1]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension1]" />
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[cDimension2]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="cDimension2"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension2]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension2]" />
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[cDimension3]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="cDimension3"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension3]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension3]" />
+                        <inputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].Columns[cDimension4]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="cDimension4"
+                          externalMetadataColumnId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension4]"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output].Columns[cDimension4]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[BatchId]"
+                          dataType="i4"
+                          name="BatchId" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[DimensionSet]"
+                          dataType="i4"
+                          name="DimensionSet" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="cType" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension1]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension1" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension2]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension2" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension3]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension3" />
+                        <externalMetadataColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input].ExternalColumns[cDimension4]"
+                          dataType="wstr"
+                          length="50"
+                          name="cDimension4" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow.Paths[Derived Column Output]"
+                  endId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow.Paths[OLE DB Source Output]"
+                  endId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Agent 2 Staging Sq.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{81F8156F-68DC-41F6-A908-C79D0772D5D0}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::ININ2StagingDataFlowId] &gt; 0"
+          DTS:From="Package\ININ Agent 2 Staging Sq\ININ To Staging Workgroup"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ININ Agent 2 Staging Sq.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{C8E5C3F9-B4AD-4250-99A8-3C3AB4B2A9DC}"
+          DTS:From="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\ININ Agent 2 Staging Sq\End Data Flow" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start Package"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{08B5898C-E44C-4062-B661-E80B9CD64CB4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start Package"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC44530A-9A08-4B8D-B371-365F9BA05AEA}"
+          SQLTask:SqlStatementSource="Exec  [MCB].[usp_StartPackage] ?, ?, ? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::BatchId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::PackageExecId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5C593F66-40C6-4911-B4C4-9C644C0C1986}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::PackageExecId] &gt; 0"
+      DTS:From="Package\Start Package"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ININ Agent 2 Staging Sq" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{80DB7B68-3BE1-4822-9679-EB31ABEB1676}"
+      DTS:From="Package\ININ Agent 2 Staging Sq"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\End Package" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\End Package"
+          TopLeft="725,587" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\ININ Agent 2 Staging Sq\End Data Flow"
+          TopLeft="28,277" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\ININ Agent 2 Staging Sq\ININ To Staging Workgroup"
+          TopLeft="22,20" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow"
+          TopLeft="33,154" />
+        <EdgeLayout
+          Id="Package\ININ Agent 2 Staging Sq.PrecedenceConstraints[Constraint]"
+          TopLeft="128,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.5,92"
+              Start="0,0"
+              End="20.5,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
+                  <mssgle:LineSegment
+                    End="16.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,46"
+                    Point2="20.5,46"
+                    Point3="20.5,50" />
+                  <mssgle:LineSegment
+                    End="20.5,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="2.25,51,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ Agent 2 Staging Sq.PrecedenceConstraints[Constraint 2]"
+          TopLeft="148.5,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46,81"
+              Start="0,0"
+              End="-46,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.5"
+                    Point2="0,40.5"
+                    Point3="-4,40.5" />
+                  <mssgle:LineSegment
+                    End="-42,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42,40.5"
+                    Point2="-46,40.5"
+                    Point3="-46,44.5" />
+                  <mssgle:LineSegment
+                    End="-46,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="347,372"
+          Size="347,415"
+          Id="Package\ININ Agent 2 Staging Sq"
+          TopLeft="181,151" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Start Package"
+          TopLeft="171,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,69"
+              Start="0,0"
+              End="110.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="4,34.5" />
+                  <mssgle:LineSegment
+                    End="106.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,34.5"
+                    Point2="110.5,34.5"
+                    Point3="110.5,38.5" />
+                  <mssgle:LineSegment
+                    End="110.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.25,39.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="528,358.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="197,249.5"
+              Start="0,0"
+              End="189.5,249.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.5,0"
+                    Point2="98.5,0"
+                    Point3="98.5,4" />
+                  <mssgle:LineSegment
+                    End="98.5,245.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.5,245.5"
+                    Point2="98.5,249.5"
+                    Point3="102.5,249.5" />
+                  <mssgle:LineSegment
+                    End="189.5,249.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions"
+          TopLeft="343,138" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Derived Column"
+          TopLeft="537,228" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet"
+          TopLeft="387,332" />
+        <EdgeLayout
+          Id="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow.Paths[OLE DB Source Output]"
+          TopLeft="432.5,180">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.5,48"
+              Start="0,0"
+              End="182.5,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="178.5,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178.5,24"
+                    Point2="182.5,24"
+                    Point3="182.5,28" />
+                  <mssgle:LineSegment
+                    End="182.5,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow.Paths[Derived Column Output]"
+          TopLeft="615,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-146,62"
+              Start="0,0"
+              End="-146,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-142,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-142,31"
+                    Point2="-146,31"
+                    Point3="-146,35" />
+                  <mssgle:LineSegment
+                    End="-146,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\ININ StatDimensions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ININ Agent 2 Staging Sq\ININ Wrokgroup 2 Staging Flow\Stg DimensionSet">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
